@@ -23,6 +23,8 @@ class postWithImageViewController: UIViewController {
         let settings = db.settings
         settings.areTimestampsInSnapshotsEnabled = true
         db.settings = settings
+        self.loadingView.layer.cornerRadius = 5.0
+        self.loadingView.clipsToBounds = true
     //    self.loadingView.removeFromSuperview()
         // Do any additional setup after loading the view.
     }

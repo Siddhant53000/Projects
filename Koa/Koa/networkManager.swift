@@ -75,7 +75,8 @@ class networkManager{
         var ref: DocumentReference? = nil
         let userID = Auth.auth().currentUser!.uid
         var collectionName = "TextWithImagePosts"
-        let postDic = ["Count": count, "post" : post] as [String : Any]
+        let timeInterval = NSDate().timeIntervalSince1970
+        let postDic = ["Count": count, "post" : post, "timestamp" : timeInterval] as [String : Any]
         ref = db.collection(userID).document(collectionName)
         ref?.getDocument { (document, error) in
             if let document = document, document.exists {
@@ -117,26 +118,12 @@ class networkManager{
                 
                 //UPLOAD TEXT
                 self.putImagePostText(post: post, count: count!, completion: {
-                    if (self.uploaded == 1)
-                    {
-                        self.uploaded = 0
-                        completion()
-                    }
-                    else{
-                        self.uploaded = 1
-                    }
+                    self.updateimageCount(count: count!, completion: {
+                      completion()
+                    })
                 })
                 
-                self.updateimageCount(count: count!, completion: {
-                    if (self.uploaded == 1)
-                    {
-                        self.uploaded = 0
-                        completion()
-                    }
-                    else{
-                        self.uploaded = 1
-                    }
-                })
+               
             }
         }
     }
