@@ -118,6 +118,7 @@ class networkManager{
                 
                 //UPLOAD TEXT
                 self.putImagePostText(post: post, count: count!, completion: {
+                    //Update image count
                     self.updateimageCount(count: count!, completion: {
                       completion()
                     })
@@ -145,15 +146,13 @@ class networkManager{
         ref = db.collection(userID).document(collectionName)
         ref?.getDocument { (document, error) in
             if let document = document, document.exists {
-                let dataDescription = document.data()//.map(String.init(describing:)) ?? "nil"
-                //document.data()
-                //print("Document data: \(dataDescription)")
+                let dataDescription = document.data()
                 count = dataDescription?["Count"] as? Int
                 count = count! + 1
-                //uploading image
                 let imageName = "\(count!)Image.png"
                 // set upload path
                 let filePath = "\(Auth.auth().currentUser!.uid)/\(imageName)"
+                //uploadin image
                 self.uploadImage(filePath: filePath, data: data, post: post, count: count, completion: {
                     completion()
                 })
@@ -166,7 +165,9 @@ class networkManager{
                 let imageName = "\(count!)Image.png"
                 // set upload path
                 let filePath = "\(Auth.auth().currentUser!.uid)/\(imageName)"
+                //On success, put image text and upadate count
                 self.uploadImage(filePath: filePath, data: data, post: post, count: count, completion: {
+                    //let view know picture is uploaded and dismiss
                     completion()
                 })
             }
@@ -174,6 +175,8 @@ class networkManager{
         
      
     }
+    
+    
     
     //Download methods
     

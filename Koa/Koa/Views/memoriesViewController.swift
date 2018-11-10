@@ -17,7 +17,7 @@ class memoriesViewController: UIViewController, UITableViewDelegate,UITableViewD
     var db: Firestore!
     var cellArray : Array<UIImage>?
     var textPostArray : Array<String>?
-    
+    var expandedCellArray : Set<Int>?
     var count : Int = 0
     //Table view methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,16 +63,27 @@ class memoriesViewController: UIViewController, UITableViewDelegate,UITableViewD
             let placeholderImage = UIImage(named: "placeholder.jpg")
             // Load the image using SDWebImage
             imageView.sd_setImage(with: reference, placeholderImage: placeholderImage)
-            
+//            cell.postText.layer.borderColor = UIColor.blue.cgColor
+//            cell.postText.layer.borderWidth = 1.0
+            cell.postText.layer.cornerRadius = 10
             cell.postText.text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."
             
         }
         return cell
     }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        expandedCellArray?.insert(indexPath.row)
+//        tableView.reloadData()
+//    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
        if (self.postTypeSegment.selectedSegmentIndex == 2)
-       {
-        return 147
+        {
+//            if (expandedCellArray?.contains(indexPath.row) ?? false)
+//            {
+//                return UITableView.automaticDimension
+//            }
+//
+                return UITableView.automaticDimension
         }
         return 409
     }

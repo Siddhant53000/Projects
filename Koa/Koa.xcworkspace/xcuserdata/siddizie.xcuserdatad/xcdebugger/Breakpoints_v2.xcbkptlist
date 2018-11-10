@@ -15,8 +15,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "22"
             endingLineNumber = "22"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "awakeFromNib()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Koa/networkManager.swift"
-            timestampString = "563563917.613102"
+            timestampString = "563573979.567899"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "44"
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Koa/networkManager.swift"
-            timestampString = "563563917.613178"
+            timestampString = "563573979.568"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
             landmarkName = "putImagePost(post:postImage:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Koa/networkManager.swift"
-            timestampString = "563563917.613234"
+            timestampString = "563573979.568047"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
             landmarkName = "putImagePost(post:postImage:completion:)"
             landmarkType = "7">
             <Locations>
@@ -86,31 +86,31 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Koa.networkManager.putImagePost(post: Swift.String, postImage: __C.UIImage) -&gt; ()"
+                  symbolName = "Koa.networkManager.putImagePost(post: Swift.String, postImage: __C.UIImage, completion: () -&gt; ()) -&gt; ()"
                   moduleName = "Koa"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/siddizie/Desktop/Koa/Koa/networkManager.swift"
-                  timestampString = "563255898.487832"
+                  urlString = "file:///Users/siddizie/Documents/Koa/Koa/Koa/networkManager.swift"
+                  timestampString = "563571328.556336"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "136"
-                  endingLineNumber = "136"
-                  offsetFromSymbolStart = "2270">
+                  startingLineNumber = "147"
+                  endingLineNumber = "147"
+                  offsetFromSymbolStart = "2313">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "function signature specialization &lt;Arg[4] = Value Promoted from Box&gt; of closure #1 (Swift.Optional&lt;__C.FIRDocumentSnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Koa.networkManager.putImagePost(post: Swift.String, postImage: __C.UIImage) -&gt; ()"
+                  symbolName = "function signature specialization &lt;Arg[4] = Value Promoted from Box&gt; of closure #1 (Swift.Optional&lt;__C.FIRDocumentSnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Koa.networkManager.putImagePost(post: Swift.String, postImage: __C.UIImage, completion: () -&gt; ()) -&gt; ()"
                   moduleName = "Koa"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/siddizie/Desktop/Koa/Koa/networkManager.swift"
-                  timestampString = "563255898.489365"
+                  urlString = "file:///Users/siddizie/Documents/Koa/Koa/Koa/networkManager.swift"
+                  timestampString = "563571328.5579211"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "134"
-                  endingLineNumber = "134"
-                  offsetFromSymbolStart = "89">
+                  startingLineNumber = "145"
+                  endingLineNumber = "145"
+                  offsetFromSymbolStart = "103">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Koa/networkManager.swift"
-            timestampString = "563563917.613287"
+            timestampString = "563573979.568087"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
             landmarkName = "getPosts(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Koa/networkManager.swift"
-            timestampString = "563563917.613346"
+            timestampString = "563573979.568138"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "210"
-            endingLineNumber = "210"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
             landmarkName = "getPosts(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Koa/Views/memoriesViewController.swift"
-            timestampString = "563342640.091143"
+            timestampString = "563573979.568177"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "tableView(_:heightForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -170,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Koa/Views/memoriesViewController.swift"
-            timestampString = "563342640.0912319"
+            timestampString = "563573979.56822"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "22"
@@ -186,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Koa/Views/memoriesViewController.swift"
-            timestampString = "563342640.091295"
+            timestampString = "563573979.568262"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "36"
@@ -198,16 +198,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Koa/Views/memoriesViewController.swift"
-            timestampString = "563342640.0913531"
+            timestampString = "563573979.568303"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "tableView(_:heightForRowAt:)"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -217,46 +217,94 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Koa/Views/memoriesViewController.swift"
-            timestampString = "563342640.09141"
+            filePath = "Koa/Views/mediaViewController.swift"
+            timestampString = "563573979.568363"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "tableView(_:cellForRowAt:)"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Koa.memoriesViewController.changePostType(__C.UISegmentedControl) -&gt; ()"
+                  symbolName = "Koa.mediaViewController.imagePickerController(_: __C.UIImagePickerController, didFinishPickingMediaWithInfo: Swift.Dictionary&lt;__C.UIImagePickerControllerInfoKey, Any&gt;) -&gt; ()"
                   moduleName = "Koa"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/siddizie/Desktop/Koa/Koa/Views/memoriesViewController.swift"
-                  timestampString = "563255898.516277"
+                  urlString = "file:///Users/siddizie/Documents/Koa/Koa/Koa/Views/mediaViewController.swift"
+                  timestampString = "563571328.583437"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "73"
-                  endingLineNumber = "73"
-                  offsetFromSymbolStart = "44">
+                  startingLineNumber = "116"
+                  endingLineNumber = "116"
+                  offsetFromSymbolStart = "741">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Koa.memoriesViewController.changePostType(__C.UISegmentedControl) -&gt; ()"
+                  symbolName = "Koa.mediaViewController.imagePickerController(_: __C.UIImagePickerController, didFinishPickingMediaWithInfo: Swift.Dictionary&lt;__C.UIImagePickerControllerInfoKey, Any&gt;) -&gt; ()"
                   moduleName = "Koa"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/siddizie/Desktop/Koa/Koa/Views/memoriesViewController.swift"
-                  timestampString = "563255898.518388"
+                  urlString = "file:///Users/siddizie/Documents/Koa/Koa/Koa/Views/mediaViewController.swift"
+                  timestampString = "563571328.585464"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "73"
-                  endingLineNumber = "73"
-                  offsetFromSymbolStart = "230">
+                  startingLineNumber = "116"
+                  endingLineNumber = "116"
+                  offsetFromSymbolStart = "1831">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Koa/Views/mediaViewController.swift"
+            timestampString = "563573979.56841"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Koa/Views/mediaViewController.swift"
+            timestampString = "563573979.568472"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Koa/Views/postWithImageViewController.swift"
+            timestampString = "563573979.568524"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

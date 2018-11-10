@@ -38,7 +38,8 @@ class mediaViewController: UIViewController, UIImagePickerControllerDelegate, UI
         let cameraTap = UITapGestureRecognizer(target: self, action: #selector(self.handleCameraTap(_:)))
         cameraAnimationView.addGestureRecognizer(cameraTap)
         cameraAnimationView.isUserInteractionEnabled = true
-        
+        cameraView.layer.borderColor = UIColor.white.cgColor
+        cameraView.layer.borderWidth = 1.0
         cameraView.addSubview(cameraAnimationView)
         
         let libraryAnimationView = LOTAnimationView(name: "postcard")
@@ -50,7 +51,8 @@ class mediaViewController: UIViewController, UIImagePickerControllerDelegate, UI
         let libraryTap = UITapGestureRecognizer(target: self, action: #selector(self.handleLibraryTap(_:)))
         libraryAnimationView.addGestureRecognizer(libraryTap)
         libraryAnimationView.isUserInteractionEnabled = true
-        
+        libraryView.layer.borderColor = UIColor.white.cgColor
+        libraryView.layer.borderWidth = 1
         libraryView.addSubview(libraryAnimationView)
         
         let saveAnimationView = LOTAnimationView(name: "saving_quotes")
@@ -63,8 +65,13 @@ class mediaViewController: UIViewController, UIImagePickerControllerDelegate, UI
         saveAnimationView.addGestureRecognizer(saveTap)
         saveAnimationView.isUserInteractionEnabled = true
         saveView.addSubview(saveAnimationView)
-        
+        saveView.layer.borderColor = UIColor.white.cgColor
+        saveView.layer.borderWidth = 1
         saveAnimationView.play()
+        
+        self.postTextView.layer.cornerRadius = 10.0
+        self.postTextView.layer.borderColor = UIColor.blue.cgColor
+        self.postTextView.layer.borderWidth = 1.0
        // FirebaseApp.configure()
         // Do any additional setup after loading the view.
     }
