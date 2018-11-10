@@ -95,8 +95,8 @@
                             <constraint firstItem="Lf9-2c-jTt" firstAttribute="leading" secondItem="I33-zt-z8L" secondAttribute="trailing" id="2yN-S4-yaD"/>
                             <constraint firstItem="j87-4I-qbE" firstAttribute="top" secondItem="RLf-Nq-h8p" secondAttribute="top" id="Dae-mb-IpK"/>
                             <constraint firstItem="Lf9-2c-jTt" firstAttribute="centerX" secondItem="j87-4I-qbE" secondAttribute="centerX" id="EcF-oC-fiA"/>
-                            <constraint firstItem="Lf9-2c-jTt" firstAttribute="bottom" secondItem="RLf-Nq-h8p" secondAttribute="bottom" id="J8k-xF-uSf"/>
-                            <constraint firstItem="9NQ-4R-JTj" firstAttribute="bottom" secondItem="RLf-Nq-h8p" secondAttribute="bottom" id="Odh-jp-ejY"/>
+                            <constraint firstItem="Lf9-2c-jTt" firstAttribute="bottom" secondItem="JYX-M0-JR3" secondAttribute="bottom" id="J8k-xF-uSf"/>
+                            <constraint firstItem="9NQ-4R-JTj" firstAttribute="bottom" secondItem="JYX-M0-JR3" secondAttribute="bottom" id="Odh-jp-ejY"/>
                             <constraint firstItem="9NQ-4R-JTj" firstAttribute="trailing" secondItem="RLf-Nq-h8p" secondAttribute="trailing" id="VyR-UH-Pqv"/>
                             <constraint firstItem="j87-4I-qbE" firstAttribute="leading" secondItem="RLf-Nq-h8p" secondAttribute="leading" constant="10" id="cif-z7-gEm"/>
                             <constraint firstItem="Lf9-2c-jTt" firstAttribute="top" secondItem="j87-4I-qbE" secondAttribute="bottom" constant="8" id="fUa-bd-lKz"/>
@@ -404,13 +404,24 @@
                                     <action selector="savePost:" destination="dfw-sp-wiY" eventType="touchUpInside" id="2r8-w5-MgR"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cce-LU-k9p">
+                                <rect key="frame" x="87.5" y="233.5" width="200" height="200"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="gmD-Ms-P44"/>
+                                    <constraint firstAttribute="width" constant="200" id="h88-NE-j1b"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="bus-Dk-YCv" firstAttribute="top" secondItem="yjr-0n-fs0" secondAttribute="bottom" id="0CT-qF-vsg"/>
+                            <constraint firstItem="nc1-RN-RJS" firstAttribute="width" secondItem="bus-Dk-YCv" secondAttribute="width" id="2Ee-rb-AIC"/>
                             <constraint firstItem="yjr-0n-fs0" firstAttribute="trailing" secondItem="VRe-02-tRZ" secondAttribute="trailing" id="4Hu-MB-cfY"/>
                             <constraint firstItem="nc1-RN-RJS" firstAttribute="leading" secondItem="bus-Dk-YCv" secondAttribute="trailing" id="4IO-uK-drC"/>
+                            <constraint firstItem="cce-LU-k9p" firstAttribute="centerX" secondItem="YQE-ao-ilh" secondAttribute="centerX" id="7hw-SO-Q28"/>
                             <constraint firstItem="VRe-02-tRZ" firstAttribute="bottom" secondItem="nc1-RN-RJS" secondAttribute="bottom" id="EVj-nB-9Ic"/>
+                            <constraint firstItem="cce-LU-k9p" firstAttribute="centerY" secondItem="YQE-ao-ilh" secondAttribute="centerY" id="Kg7-BE-xPI"/>
                             <constraint firstItem="nc1-RN-RJS" firstAttribute="trailing" secondItem="VRe-02-tRZ" secondAttribute="trailing" id="NYe-lL-MX3"/>
                             <constraint firstItem="yjr-0n-fs0" firstAttribute="top" secondItem="ZEx-p9-RmF" secondAttribute="bottom" id="PJ6-dv-pQN"/>
                             <constraint firstItem="ZEx-p9-RmF" firstAttribute="top" secondItem="VRe-02-tRZ" secondAttribute="top" id="Q6N-5A-s8T"/>
@@ -424,6 +435,7 @@
                         <viewLayoutGuide key="safeArea" id="VRe-02-tRZ"/>
                     </view>
                     <connections>
+                        <outlet property="loadingView" destination="cce-LU-k9p" id="5Vt-TZ-sbz"/>
                         <outlet property="postImgView" destination="ZEx-p9-RmF" id="3Ya-H8-HQ2"/>
                         <outlet property="postText" destination="yjr-0n-fs0" id="S4O-11-fjY"/>
                     </connections>

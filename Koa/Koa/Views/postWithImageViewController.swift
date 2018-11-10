@@ -8,12 +8,14 @@
 
 import UIKit
 import Firebase
+import Lottie
 class postWithImageViewController: UIViewController {
     var postImage : UIImage?
     var db: Firestore!
 
     @IBOutlet weak var postImgView: UIImageView!
     @IBOutlet weak var postText: UITextView!
+    @IBOutlet weak var loadingView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +23,7 @@ class postWithImageViewController: UIViewController {
         let settings = db.settings
         settings.areTimestampsInSnapshotsEnabled = true
         db.settings = settings
+    //    self.loadingView.removeFromSuperview()
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -29,9 +32,33 @@ class postWithImageViewController: UIViewController {
     }
 
     @IBAction func savePost(_ sender: Any) {
-     
-        networkManager.sharedInstance.putImagePost(post: postText.text, postImage: postImgView.image!)
-        dismiss(animated: true, completion: nil)
+      
+        let loadingAnimationView = LOTAnimationView(name: "spinning_upload")
+        loadingAnimationView.frame = CGRect(x: 0, y: 0, width: self.loadingView.frame.width, height: self.loadingView.frame.height)
+        //  animationView.center = self.view.center
+        loadingAnimationView.contentMode = .scaleAspectFill
+        loadingAnimationView.loopAnimation = true
+        loadingAnimationView.play()
+        loadingView.backgroundColor = UIColor.black
+        loadingView.addSubview(loadingAnimationView)
+        //loadingView.backgroundColor = UIColor.blue
+        networkManager.sharedInstance.putImagePost(post: postText.text, postImage: postImgView.image!, completion: {
+            loadingAnimationView.removeFromSuperview()
+            let successAnimationView = LOTAnimationView(name: "success")
+            successAnimationView.frame = CGRect(x: 0, y: 0, width: self.loadingView.frame.width, height: self.loadingView.frame.height)
+            //  animationView.center = self.view.center
+            successAnimationView.contentMode = .scaleAspectFill
+           // successAnimationView.loopAnimation = true
+           // successAnimationView.play()
+            self.loadingView.backgroundColor = UIColor.black
+            self.loadingView.addSubview(successAnimationView)
+           
+            
+            successAnimationView.play(completion: { (true) in
+                self.dismiss(animated: true, completion: nil)
+            })
+        })
+      //  dismiss(animated: true, completion: nil)
     }
     
     

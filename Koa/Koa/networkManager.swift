@@ -12,10 +12,11 @@ import FirebaseStorage
 class networkManager{
     static let sharedInstance = networkManager()
     var db: Firestore!
+    var uploaded : Int? = 0
 //Upload methods
     
     //UPLOADING TEXT POSTS
-    func putTextPost(post: String){
+    func putTextPost(post: String ){
         db = Firestore.firestore()
         let settings = db.settings
         settings.areTimestampsInSnapshotsEnabled = true
@@ -39,7 +40,7 @@ class networkManager{
     }
     
     //Updating image count for user
-    func updateimageCount(count :Int){
+    func updateimageCount(count :Int, completion : @escaping ()->()){
         db = Firestore.firestore()
         let settings = db.settings
         settings.areTimestampsInSnapshotsEnabled = true
@@ -54,16 +55,18 @@ class networkManager{
                 ref?.updateData([
                     "Count": count
                     ])
+                completion()
             } else {
                 ref?.setData([
                     "Count": count
                     ])
+                completion()
             }
         }
     }
     
     //UPLOADING IMAGE POSTS TEXT
-    func putImagePostText(post:String, count : Int)
+    func putImagePostText(post:String, count : Int, completion : () -> ())
     {
         db = Firestore.firestore()
         let settings = db.settings
@@ -98,10 +101,11 @@ class networkManager{
                     ])
             }
         }
+        completion()
     }
     
     //Upload image
-    func uploadImage(filePath:String, data : NSData, post: String, count: Int?)
+    func uploadImage(filePath:String, data : NSData, post: String, count: Int?, completion : @escaping ()-> ())
     {
         let storage = Storage.storage()
         let storageRef = storage.reference()
@@ -112,15 +116,34 @@ class networkManager{
             }else{
                 
                 //UPLOAD TEXT
-                self.putImagePostText(post: post, count: count!)
-                self.updateimageCount(count: count!)
+                self.putImagePostText(post: post, count: count!, completion: {
+                    if (self.uploaded == 1)
+                    {
+                        self.uploaded = 0
+                        completion()
+                    }
+                    else{
+                        self.uploaded = 1
+                    }
+                })
+                
+                self.updateimageCount(count: count!, completion: {
+                    if (self.uploaded == 1)
+                    {
+                        self.uploaded = 0
+                        completion()
+                    }
+                    else{
+                        self.uploaded = 1
+                    }
+                })
             }
         }
     }
     
     
     // UPLOADING IMAGE POST
-    func putImagePost(post:String, postImage : UIImage){
+    func putImagePost(post:String, postImage : UIImage, completion : @escaping () -> ()){
         var data = NSData()
         data = postImage.jpegData(compressionQuality: 100)! as NSData
         db = Firestore.firestore()
@@ -144,7 +167,9 @@ class networkManager{
                 let imageName = "\(count!)Image.png"
                 // set upload path
                 let filePath = "\(Auth.auth().currentUser!.uid)/\(imageName)"
-                self.uploadImage(filePath: filePath, data: data, post: post, count: count)
+                self.uploadImage(filePath: filePath, data: data, post: post, count: count, completion: {
+                    completion()
+                })
             } else {
                 ref?.setData([
                     "Count": 0
@@ -154,7 +179,9 @@ class networkManager{
                 let imageName = "\(count!)Image.png"
                 // set upload path
                 let filePath = "\(Auth.auth().currentUser!.uid)/\(imageName)"
-                self.uploadImage(filePath: filePath, data: data, post: post, count: count)
+                self.uploadImage(filePath: filePath, data: data, post: post, count: count, completion: {
+                    completion()
+                })
             }
         }
         

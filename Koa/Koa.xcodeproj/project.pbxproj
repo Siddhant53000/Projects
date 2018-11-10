@@ -38,6 +38,8 @@
 		0EBF7EE52176D4EB0003E791 /* camera.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EBF7EE42176D4EB0003E791 /* camera.json */; };
 		0EBF7EE72176D5910003E791 /* postcard.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EBF7EE62176D5910003E791 /* postcard.json */; };
 		0EBF7EE92176D6AB0003E791 /* saving_quotes.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EBF7EE82176D6AB0003E791 /* saving_quotes.json */; };
+		0EC45C062197490F00BE88D4 /* spinning_upload.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EC45C052197490F00BE88D4 /* spinning_upload.json */; };
+		0EC45C0821974AA700BE88D4 /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EC45C0721974AA700BE88D4 /* success.json */; };
 		5CD275BDB03B0A3476923A86 /* Pods_KoaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A777302CDE53A1067293860E /* Pods_KoaTests.framework */; };
 		822209F91291C7AA16F83A6B /* Pods_Koa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE46F701D8B9CA1E296146C1 /* Pods_Koa.framework */; };
 /* End PBXBuildFile section */
@@ -88,6 +90,8 @@
 		0EBF7EE42176D4EB0003E791 /* camera.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = camera.json; sourceTree = "<group>"; };
 		0EBF7EE62176D5910003E791 /* postcard.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = postcard.json; sourceTree = "<group>"; };
 		0EBF7EE82176D6AB0003E791 /* saving_quotes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = saving_quotes.json; sourceTree = "<group>"; };
+		0EC45C052197490F00BE88D4 /* spinning_upload.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = spinning_upload.json; sourceTree = "<group>"; };
+		0EC45C0721974AA700BE88D4 /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
 		25220A448114F80646BFA702 /* Pods-KoaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KoaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KoaTests/Pods-KoaTests.release.xcconfig"; sourceTree = "<group>"; };
 		34BE05CDB5EDBAA461A179C1 /* Pods-KoaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KoaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KoaTests/Pods-KoaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		606407569770DFA63BBA30E7 /* Pods-Koa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koa.release.xcconfig"; path = "Pods/Target Support Files/Pods-Koa/Pods-Koa.release.xcconfig"; sourceTree = "<group>"; };
@@ -184,6 +188,8 @@
 		0EBF7EEA2176D6B40003E791 /* lottie Jsons */ = {
 			isa = PBXGroup;
 			children = (
+				0EC45C0721974AA700BE88D4 /* success.json */,
+				0EC45C052197490F00BE88D4 /* spinning_upload.json */,
 				0EA295A52182C1790017C7D6 /* ondas.json */,
 				0E37C19B21801487000A38F9 /* rocket.json */,
 				0E37C19821801289000A38F9 /* bms-rocket.json */,
@@ -307,6 +313,8 @@
 				0E5FFE162175803B0001EF11 /* Assets.xcassets in Resources */,
 				0E604EF62179742900F99850 /* memoriesTableViewCell.xib in Resources */,
 				0E5FFE112175803A0001EF11 /* Main.storyboard in Resources */,
+				0EC45C062197490F00BE88D4 /* spinning_upload.json in Resources */,
+				0EC45C0821974AA700BE88D4 /* success.json in Resources */,
 				0EB9EE542192980C0097819D /* textPostTableViewCell.xib in Resources */,
 				0E5FFE2F21758BC80001EF11 /* heart_animation.json in Resources */,
 				0E37C19621800DF4000A38F9 /* soda_loader.json in Resources */,
