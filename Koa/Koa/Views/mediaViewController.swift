@@ -16,6 +16,7 @@ class mediaViewController: UIViewController, UIImagePickerControllerDelegate, UI
     @IBOutlet weak var postTextView: UITextView!
     
     var db: Firestore!
+    var mediaShown = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         print("YES")
@@ -75,6 +76,13 @@ class mediaViewController: UIViewController, UIImagePickerControllerDelegate, UI
        // FirebaseApp.configure()
         // Do any additional setup after loading the view.
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if (mediaShown == 1)
+        {
+            dismiss(animated: true, completion: nil)
+        }
+    }
     func cameraPicker(){
         //Showing camera picker
         let picker = UIImagePickerController()
@@ -114,8 +122,10 @@ class mediaViewController: UIViewController, UIImagePickerControllerDelegate, UI
         }
         print (selectedImage.size)
         let postWImgViewController:postWithImageViewController = storyboard?.instantiateViewController(withIdentifier: "postWithImageViewController") as! postWithImageViewController
+       // postWImgViewController.delegate = self
         postWImgViewController.postImgView?.image = selectedImage
         postWImgViewController.postImage = selectedImage
+        mediaShown = 1
         self.present(postWImgViewController, animated: true, completion: nil)
         
     }

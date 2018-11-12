@@ -133,7 +133,7 @@ class networkManager{
     // UPLOADING IMAGE POST
     func putImagePost(post:String, postImage : UIImage, completion : @escaping () -> ()){
         var data = NSData()
-        data = postImage.jpegData(compressionQuality: 100)! as NSData
+        data = postImage.jpegData(compressionQuality: 40)! as NSData
         db = Firestore.firestore()
         let settings = db.settings
         settings.areTimestampsInSnapshotsEnabled = true
@@ -176,7 +176,34 @@ class networkManager{
      
     }
     
-    
+    func putHappySad(feeling : String)
+    {
+        db = Firestore.firestore()
+        let settings = db.settings
+        settings.areTimestampsInSnapshotsEnabled = true
+        db.settings = settings
+        var ref: DocumentReference? = nil
+        let userID = Auth.auth().currentUser!.uid
+        let collectionName = "Feelings"
+        let timeInterval = NSDate().timeIntervalSince1970
+        
+        let postDic = [ "feeling" : feeling, "timestamp" : timeInterval] as [String : Any]
+        ref = db.collection(userID).document(collectionName)
+        ref?.getDocument { (document, error) in
+            if let document = document, document.exists {
+                ref?.updateData([
+                    "feelings": FieldValue.arrayUnion([postDic])
+                    ])
+            } else {
+                ref?.setData([
+                    "feelings": FieldValue.arrayUnion([postDic])
+                    ])
+            }
+        }
+        let defaults = UserDefaults.standard
+        defaults.set(timeInterval, forKey: "lastFeelingSet")
+        
+    }
     
     //Download methods
     
