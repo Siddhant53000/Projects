@@ -66,7 +66,7 @@ class networkManager{
     }
     
     //UPLOADING IMAGE POSTS TEXT
-    func putImagePostText(post:String, count : Int, completion : () -> ())
+    func putImagePostText(post:String, count : Int, completion : @escaping () -> ())
     {
         db = Firestore.firestore()
         let settings = db.settings
@@ -83,26 +83,28 @@ class networkManager{
                 ref?.updateData([
                     "post": FieldValue.arrayUnion([postDic])
                     ])
+                completion()
             } else {
                 ref?.setData([
                     "post": FieldValue.arrayUnion([postDic])
                     ])
+                completion()
             }
         }
-        collectionName = "ContainsImage"
-        ref = db.collection(userID).document(collectionName)
-        ref?.getDocument { (document, error) in
-            if let document = document, document.exists {
-                ref?.updateData([
-                    "ContainsImage": FieldValue.arrayUnion([count])
-                    ])
-            } else {
-                ref?.setData([
-                    "ContainsImage": FieldValue.arrayUnion([count])
-                    ])
-            }
-        }
-        completion()
+//        collectionName = "ContainsImage"
+//        ref = db.collection(userID).document(collectionName)
+//        ref?.getDocument { (document, error) in
+//            if let document = document, document.exists {
+//                ref?.updateData([
+//                    "ContainsImage": FieldValue.arrayUnion([count])
+//                    ])
+//            } else {
+//                ref?.setData([
+//                    "ContainsImage": FieldValue.arrayUnion([count])
+//                    ])
+//            }
+//        }
+        
     }
     
     //Upload image
@@ -133,7 +135,25 @@ class networkManager{
     // UPLOADING IMAGE POST
     func putImagePost(post:String, postImage : UIImage, completion : @escaping () -> ()){
         var data = NSData()
-        data = postImage.jpegData(compressionQuality: 40)! as NSData
+        data = postImage.jpegData(compressionQuality: 100)! as NSData
+        var imageSize: Int = data.length / 1024
+        print("size of image in KB: %d ", imageSize)
+        if (imageSize > 1000 && imageSize < 3000)
+        {
+            data = postImage.jpegData(compressionQuality: 0.8)! as NSData
+        }
+        if (imageSize > 3000 && imageSize < 4000)
+        {
+            data = postImage.jpegData(compressionQuality: 0.7)! as NSData
+        }
+        if (imageSize > 4000 && imageSize < 6000)
+        {
+            data = postImage.jpegData(compressionQuality: 0.6)! as NSData
+        }
+        if (imageSize > 6000)
+        {
+            data = postImage.jpegData(compressionQuality: 0.4)! as NSData
+        }
         db = Firestore.firestore()
         let settings = db.settings
         settings.areTimestampsInSnapshotsEnabled = true
