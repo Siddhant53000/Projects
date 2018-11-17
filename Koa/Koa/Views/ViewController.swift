@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var sadButton: UIButton!
     @IBOutlet weak var happyButton: UIButton!
     @IBOutlet weak var addButton: UIButton!
-    
+    var dateWasSaved : Bool?
     @IBAction func sadButton(_ sender: Any) {
         networkManager.sharedInstance.putHappySad(feeling: "Sad")
         let mViewController:mediaViewController = storyboard?.instantiateViewController(withIdentifier: "mediaViewController") as! mediaViewController
@@ -54,7 +54,7 @@ class ViewController: UIViewController {
         addButton.layer.cornerRadius = 30
         let date = NSDate(timeIntervalSince1970: TimeInterval(defaults.integer(forKey: "lastFeelingSet")))
         if (Calendar.current.isDateInToday(date as Date)) {
-            let fullScreenAnimationView = LOTAnimationView(name: "loading")
+            let fullScreenAnimationView = LOTAnimationView(name: "duck_blue_style")
             fullScreenAnimationView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
             //  animationView.center = self.view.center
             fullScreenAnimationView.contentMode = .scaleAspectFit
@@ -64,8 +64,10 @@ class ViewController: UIViewController {
             happyButton.isHidden = true
             sadButton.isHidden = true
             self.view.bringSubviewToFront(addButton)
+            self.dateWasSaved = true
         }
         else{
+            self.dateWasSaved = false
            // happyButton.backgroundColor = UIColor(red: 248, green: 67.0, blue: 83)
             let happyAnimationView = LOTAnimationView(name: "heart_animation")
             happyButton.backgroundColor = UIColor(
@@ -118,8 +120,8 @@ class ViewController: UIViewController {
         }
         
         let date = NSDate(timeIntervalSince1970: TimeInterval(defaults.integer(forKey: "lastFeelingSet")))
-        if (Calendar.current.isDateInToday(date as Date)) {
-            let fullScreenAnimationView = LOTAnimationView(name: "loading")
+        if (Calendar.current.isDateInToday(date as Date) && dateWasSaved != true) {
+            let fullScreenAnimationView = LOTAnimationView(name: "duck_blue_style")
             fullScreenAnimationView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
             //  animationView.center = self.view.center
             fullScreenAnimationView.contentMode = .scaleAspectFit

@@ -12,7 +12,8 @@ import Lottie
 class postWithImageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var postImage : UIImage?
     var db: Firestore!
-
+    var isKeyboardAppear = false
+    var keyboardSize  : CGFloat?
     @IBOutlet weak var postImgView: UIImageView!
     @IBOutlet weak var postText: UITextView!
     @IBOutlet weak var loadingView: UIView!
@@ -22,6 +23,13 @@ class postWithImageViewController: UIViewController, UIImagePickerControllerDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Keybaord Setup
+        self.hideKeyboardWhenTappedAround()
+        self.postText.addDoneButtonOnKeyboard()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        //Firebase setup
         db = Firestore.firestore()
         let settings = db.settings
         settings.areTimestampsInSnapshotsEnabled = true
@@ -58,7 +66,7 @@ class postWithImageViewController: UIViewController, UIImagePickerControllerDele
         //  animationView.center = self.view.center
         saveAnimationView.contentMode = .scaleAspectFit
         saveAnimationView.loopAnimation = true
-        saveAnimationView.animationSpeed = 0.5
+        saveAnimationView.animationSpeed = 0.3
         let saveTap = UITapGestureRecognizer(target: self, action: #selector(self.handleSaveTap(_:)))
         saveAnimationView.addGestureRecognizer(saveTap)
         saveAnimationView.isUserInteractionEnabled = true
@@ -81,6 +89,31 @@ class postWithImageViewController: UIViewController, UIImagePickerControllerDele
         
     }
     
+    
+    //Keyboard methods
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if !isKeyboardAppear {
+            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                if self.view.frame.origin.y == 0{
+                    self.view.frame.origin.y -= keyboardSize.height
+                }
+            }
+            isKeyboardAppear = true
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if isKeyboardAppear {
+            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                if self.view.frame.origin.y != 0{
+                    self.view.frame.origin.y += keyboardSize.height
+                }
+            }
+            isKeyboardAppear = false
+        }
+    }
+    
+    //#MARK Media Methods
     func cameraPicker(){
         //Showing camera picker
         let picker = UIImagePickerController()
@@ -103,7 +136,13 @@ class postWithImageViewController: UIViewController, UIImagePickerControllerDele
     }
     @objc func handleSaveTap(_ sender: UITapGestureRecognizer) {
         let loadingAnimationView = LOTAnimationView(name: "spinning_upload")
+        if !(self.isKeyboardAppear){
         loadingAnimationView.frame = CGRect(x: 0, y: 0, width: self.loadingView.frame.width, height: self.loadingView.frame.height)
+        }
+        else{
+            self.loadingView.frame.origin.y += 150;
+             loadingAnimationView.frame = CGRect(x: 0, y: 0, width: self.loadingView.frame.width, height: self.loadingView.frame.height)
+        }
         //  animationView.center = self.view.center
         loadingAnimationView.contentMode = .scaleAspectFill
         loadingAnimationView.loopAnimation = true
@@ -111,7 +150,14 @@ class postWithImageViewController: UIViewController, UIImagePickerControllerDele
         loadingView.backgroundColor = UIColor.black
         loadingView.addSubview(loadingAnimationView)
         //loadingView.backgroundColor = UIColor.blue
-        networkManager.sharedInstance.putImagePost(post: postText.text, postImage: postImgView.image!, completion: {
+        var textToSend : String?
+        if (postText.text == nil || postText.text == "" || postText.text == "What is something you are grateful for today?"){
+            textToSend = "none"
+        }
+        else{
+            textToSend = postText.text
+        }
+        networkManager.sharedInstance.putImagePost(post: textToSend!, postImage: postImgView.image!, completion: {
             loadingAnimationView.removeFromSuperview()
             let successAnimationView = LOTAnimationView(name: "success")
             successAnimationView.frame = CGRect(x: 0, y: 0, width: self.loadingView.frame.width, height: self.loadingView.frame.height)
@@ -132,7 +178,8 @@ class postWithImageViewController: UIViewController, UIImagePickerControllerDele
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true, completion: nil)
         guard let selectedImage = info[.originalImage] as? UIImage else {
-            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+            return
+            //fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
         print (selectedImage.size)
         self.postImage = selectedImage

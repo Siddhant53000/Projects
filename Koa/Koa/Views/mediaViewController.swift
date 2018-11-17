@@ -9,6 +9,57 @@
 import UIKit
 import Lottie
 import Firebase
+
+//HIDING KEYBOARD WHEN TAPPED OUTSIDE
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+
+//Adding done button on keybaord
+
+extension UITextView{
+    
+    @IBInspectable var doneAccessory: Bool{
+        get{
+            return self.doneAccessory
+        }
+        set (hasDone) {
+            if hasDone{
+                addDoneButtonOnKeyboard()
+            }
+        }
+    }
+    
+    func addDoneButtonOnKeyboard()
+    {
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        doneToolbar.barStyle = .default
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
+        
+        let items = [flexSpace, done]
+        doneToolbar.items = items
+        doneToolbar.sizeToFit()
+        
+        self.inputAccessoryView = doneToolbar
+    }
+    
+    @objc func doneButtonAction()
+    {
+        self.resignFirstResponder()
+    }
+}
+
+
 class mediaViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var libraryView: UIView!
@@ -21,8 +72,8 @@ class mediaViewController: UIViewController, UIImagePickerControllerDelegate, UI
         super.viewDidLoad()
         print("YES")
         // [START setup]
-       
-        
+       self.hideKeyboardWhenTappedAround()
+        self.postTextView.addDoneButtonOnKeyboard()
        // Firestore.firestore().settings = settings
         // [END setup]
         db = Firestore.firestore()
@@ -44,7 +95,7 @@ class mediaViewController: UIViewController, UIImagePickerControllerDelegate, UI
         cameraView.addSubview(cameraAnimationView)
         
         let libraryAnimationView = LOTAnimationView(name: "postcard")
-        libraryAnimationView.frame = CGRect(x: 0, y: 0, width: self.libraryView.frame.width, height: self.libraryView.frame.height)
+        libraryAnimationView.frame = CGRect(x: 10, y: 0, width: self.libraryView.frame.width-20, height: self.libraryView.frame.height-20)
         //  animationView.center = self.view.center
         libraryAnimationView.contentMode = .scaleAspectFill
         libraryAnimationView.loopAnimation = true
@@ -61,7 +112,7 @@ class mediaViewController: UIViewController, UIImagePickerControllerDelegate, UI
         //  animationView.center = self.view.center
         saveAnimationView.contentMode = .scaleAspectFit
         saveAnimationView.loopAnimation = true
-        saveAnimationView.animationSpeed = 0.5
+        saveAnimationView.animationSpeed = 0.3
         let saveTap = UITapGestureRecognizer(target: self, action: #selector(self.handleSaveTap(_:)))
         saveAnimationView.addGestureRecognizer(saveTap)
         saveAnimationView.isUserInteractionEnabled = true
@@ -76,6 +127,7 @@ class mediaViewController: UIViewController, UIImagePickerControllerDelegate, UI
        // FirebaseApp.configure()
         // Do any additional setup after loading the view.
     }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         if (mediaShown == 1)
@@ -104,13 +156,15 @@ class mediaViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
     }
     @objc func handleSaveTap(_ sender: UITapGestureRecognizer) {
-        if (postTextView.text == "Wanna say something?")
-        {
-            //Text isn't changed
-            return
+        var textToSend : String?
+        if (postTextView.text == nil || postTextView.text == "" || postTextView.text == "What is something you are grateful for today?"){
+            textToSend = "none"
+        }
+        else{
+            textToSend = postTextView.text
         }
         //Save post
-        networkManager.sharedInstance.putTextPost(post: postTextView.text)
+        networkManager.sharedInstance.putTextPost(post: textToSend!)
         dismiss(animated: true, completion: nil)
         
 }
@@ -118,7 +172,9 @@ class mediaViewController: UIViewController, UIImagePickerControllerDelegate, UI
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true, completion: nil)
         guard let selectedImage = info[.originalImage] as? UIImage else {
-            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+            return
+            //fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+            
         }
         print (selectedImage.size)
         let postWImgViewController:postWithImageViewController = storyboard?.instantiateViewController(withIdentifier: "postWithImageViewController") as! postWithImageViewController
