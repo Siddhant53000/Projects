@@ -1,0 +1,23 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 The program calculates the number of minutes spent between 8pm and 8am for two given dates.\
+\
+The method \'93minutesSpent\'94 calculates the minutes and expects a parameter \'93visit\'94. \
+\
+The algorithm itself works on the basis that we can calculate the number of minutes by simply bringing the startTime and departureTime to 8am (date depends on the hour of start and departure time, more on this later) and halving the number of minutes between them. However we also need to keep a track of the relevant number of minutes that we ignored when bringing the dates to 8am and add this back to the number of minutes.\
+\
+We start by truncating the startTimes and departureTimes. This means that if the start time is after 8am and before 8pm, it will be set to 8pm. For the departure time, it would be set to 8am.\
+\
+Now we check the hour of arrival. If the hour of arrival is between 8pm and 8am, bring the arrival time to 8am of next day and track number of minutes that were added to start time to get to 8am and add to variable extraMinutes. If start time is between midnight and 8am, bring to 8am of same day, track number of minutes and add to extraMinutes. Since arrival time was truncated, if it is between 8am and 8pm, it would automatically be set to 8pm to not add irrelevant minutes. \
+\
+Similarly check hour of departure. If after midnight and before 8am, bring to 8am of same day and subtract the difference of minutes from the extraMinutes. If the departure time is before midnight and after 8pm set it back to 8am and add the difference of minutes between departureTime and 8pm. Since departure time was truncated, it it is between 8am and 8pm, it would automatically be set to 8am to not add irrelevant minutes. \
+\
+Finally now we have a tack of the number of relevant minutes our algorithm is omitting. We can now take the arrival and departure time (both set to 8am according to description), find the time difference in minutes. We are only interested in half of the day so we divide the difference by 2 . Finally add the extraMinutes to this time and that is the number of minutes spent between 8pm and 8am for any interval of times. \
+\
+If the return value is -1, wither the star time or departure is nil. Or the departure time is before the startTime\
+}
