@@ -15,8 +15,7 @@ class nightVisitMinutesCalculator {
             return -1;
         }
         let calendar = Calendar.current
-        let arrivalHour = calendar.component(.hour, from: visit.arrivalTime!)       //The hour of the arrival time
-        let departureHour = calendar.component(.hour, from: visit.departureTime!)  //The hour of departure time
+       
         var extraMinutes = 0.0
         let minutesInHour = 60.0                                                    //Number of minutes in an hour
         let stayDuration = visit.departureTime!.timeIntervalSince(visit.arrivalTime!) //calculate duration the stay lasted
@@ -28,7 +27,8 @@ class nightVisitMinutesCalculator {
         //truncating start time and end time to relevant times for calcualtion. See methods for further explanation
         let truncatedArrivalTime = truncateArrivalTime(arrivalTime: visit.arrivalTime!)
         let truncatedDepartureTime = truncateDepartureTime(departureTime: visit.departureTime!)
-        
+        let arrivalHour = calendar.component(.hour, from: truncatedArrivalTime)       //The hour of the arrival time
+        let departureHour = calendar.component(.hour, from: truncatedDepartureTime)  //The hour of departure time
         
         var arrivalTimeAfterCountingExtraHours = truncatedArrivalTime     //For calculation of duration of stay excluding extra hours from arrival date
         var departureTimeAfterCountingExtraHours = truncatedDepartureTime //For calculation of duration of stay excluding extra hours from departure date
