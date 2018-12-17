@@ -13,6 +13,8 @@ class textPostTableViewCell: UITableViewCell {
     @IBOutlet weak var postText: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+        postText.layer.cornerRadius = 5
+        postText.clipsToBounds = true
         // Initialization code
     }
 

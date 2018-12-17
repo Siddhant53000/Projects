@@ -112,6 +112,8 @@ class memoriesViewController: UIViewController, UITableViewDelegate,UITableViewD
         cellArray?.append(firstImage)
         memoriesTable.delegate = self
         memoriesTable.dataSource = self
+        memoriesTable.rowHeight = UITableView.automaticDimension
+        memoriesTable.estimatedRowHeight = 355
         networkManager.sharedInstance.getCount { (success, count, error) in
             self.count = count ?? 0
             networkManager.sharedInstance.getImagePosts(completion: { (success, posts, error) in

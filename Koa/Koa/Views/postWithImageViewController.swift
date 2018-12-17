@@ -35,45 +35,28 @@ class postWithImageViewController: UIViewController, UIImagePickerControllerDele
         settings.areTimestampsInSnapshotsEnabled = true
         db.settings = settings
         
-        let cameraAnimationView = LOTAnimationView(name: "camera")
-        cameraAnimationView.frame = CGRect(x: 0, y: 0, width: self.cameraView.frame.width, height: self.cameraView.frame.height)
-        //  animationView.center = self.view.center
-        cameraAnimationView.contentMode = .scaleToFill
-        cameraAnimationView.loopAnimation = true
-        cameraAnimationView.play()
         let cameraTap = UITapGestureRecognizer(target: self, action: #selector(self.handleCameraTap(_:)))
-        cameraAnimationView.addGestureRecognizer(cameraTap)
-        cameraAnimationView.isUserInteractionEnabled = true
+        cameraView.addGestureRecognizer(cameraTap)
+        cameraView.isUserInteractionEnabled = true
         cameraView.layer.borderColor = UIColor.white.cgColor
         cameraView.layer.borderWidth = 1.0
-        cameraView.addSubview(cameraAnimationView)
+      //  cameraView.addSubview(cameraAnimationView)
         
-        let libraryAnimationView = LOTAnimationView(name: "postcard")
-        libraryAnimationView.frame = CGRect(x: 0, y: 0, width: self.libraryView.frame.width, height: self.libraryView.frame.height)
-        //  animationView.center = self.view.center
-        libraryAnimationView.contentMode = .scaleAspectFill
-        libraryAnimationView.loopAnimation = true
-        libraryAnimationView.play()
+       
         let libraryTap = UITapGestureRecognizer(target: self, action: #selector(self.handleLibraryTap(_:)))
-        libraryAnimationView.addGestureRecognizer(libraryTap)
-        libraryAnimationView.isUserInteractionEnabled = true
+        libraryView.addGestureRecognizer(libraryTap)
+        libraryView.isUserInteractionEnabled = true
         libraryView.layer.borderColor = UIColor.white.cgColor
         libraryView.layer.borderWidth = 1
-        libraryView.addSubview(libraryAnimationView)
+        //libraryView.addSubview(libraryAnimationView)
         
-        let saveAnimationView = LOTAnimationView(name: "saving_quotes")
-        saveAnimationView.frame = CGRect(x: self.saveView.frame.width/3, y: 0, width: self.saveView.frame.width/2, height: self.saveView.frame.height)
-        //  animationView.center = self.view.center
-        saveAnimationView.contentMode = .scaleAspectFit
-        saveAnimationView.loopAnimation = true
-        saveAnimationView.animationSpeed = 0.3
         let saveTap = UITapGestureRecognizer(target: self, action: #selector(self.handleSaveTap(_:)))
-        saveAnimationView.addGestureRecognizer(saveTap)
-        saveAnimationView.isUserInteractionEnabled = true
-        saveView.addSubview(saveAnimationView)
+        saveView.addGestureRecognizer(saveTap)
+        saveView.isUserInteractionEnabled = true
+       // saveView.addSubview(saveAnimationView)
         saveView.layer.borderColor = UIColor.white.cgColor
         saveView.layer.borderWidth = 1
-        saveAnimationView.play()
+        //saveAnimationView.play()
         
         self.loadingView.layer.cornerRadius = 5.0
         self.loadingView.clipsToBounds = true

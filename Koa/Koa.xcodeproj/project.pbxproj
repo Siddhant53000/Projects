@@ -38,7 +38,6 @@
 		0EBF7EE32176D2840003E791 /* ModernPictogramsForLottie_Camera.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EBF7EE22176D2840003E791 /* ModernPictogramsForLottie_Camera.json */; };
 		0EBF7EE52176D4EB0003E791 /* camera.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EBF7EE42176D4EB0003E791 /* camera.json */; };
 		0EBF7EE72176D5910003E791 /* postcard.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EBF7EE62176D5910003E791 /* postcard.json */; };
-		0EBF7EE92176D6AB0003E791 /* saving_quotes.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EBF7EE82176D6AB0003E791 /* saving_quotes.json */; };
 		0EC45C062197490F00BE88D4 /* spinning_upload.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EC45C052197490F00BE88D4 /* spinning_upload.json */; };
 		0EC45C0821974AA700BE88D4 /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EC45C0721974AA700BE88D4 /* success.json */; };
 		0EED485421A0A82000A989AE /* PingPong.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EED485321A0A82000A989AE /* PingPong.json */; };
@@ -93,7 +92,6 @@
 		0EBF7EE22176D2840003E791 /* ModernPictogramsForLottie_Camera.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ModernPictogramsForLottie_Camera.json; sourceTree = "<group>"; };
 		0EBF7EE42176D4EB0003E791 /* camera.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = camera.json; sourceTree = "<group>"; };
 		0EBF7EE62176D5910003E791 /* postcard.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = postcard.json; sourceTree = "<group>"; };
-		0EBF7EE82176D6AB0003E791 /* saving_quotes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = saving_quotes.json; sourceTree = "<group>"; };
 		0EC45C052197490F00BE88D4 /* spinning_upload.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = spinning_upload.json; sourceTree = "<group>"; };
 		0EC45C0721974AA700BE88D4 /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
 		0EED485321A0A82000A989AE /* PingPong.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PingPong.json; sourceTree = "<group>"; };
@@ -207,7 +205,6 @@
 				0E5FFE3021758E8F0001EF11 /* unhappy_french_fries.json */,
 				0EBF7EE22176D2840003E791 /* ModernPictogramsForLottie_Camera.json */,
 				0E5FFE2E21758BC80001EF11 /* heart_animation.json */,
-				0EBF7EE82176D6AB0003E791 /* saving_quotes.json */,
 				0EBF7EE62176D5910003E791 /* postcard.json */,
 				0EBF7EE42176D4EB0003E791 /* camera.json */,
 			);
@@ -340,7 +337,6 @@
 				0E37C19921801289000A38F9 /* flow.json in Resources */,
 				0E69B9F721913DB1009B5073 /* FeedTableViewCell.xib in Resources */,
 				0EBF7EE52176D4EB0003E791 /* camera.json in Resources */,
-				0EBF7EE92176D6AB0003E791 /* saving_quotes.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
