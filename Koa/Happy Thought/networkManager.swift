@@ -74,7 +74,7 @@ class networkManager{
         db.settings = settings
         var ref: DocumentReference? = nil
         let userID = Auth.auth().currentUser!.uid
-        var collectionName = "TextWithImagePosts"
+        let collectionName = "TextWithImagePosts"
         let timeInterval = NSDate().timeIntervalSince1970
         let postDic = ["Count": count, "post" : post, "timestamp" : timeInterval] as [String : Any]
         ref = db.collection(userID).document(collectionName)
@@ -136,7 +136,7 @@ class networkManager{
     func putImagePost(post:String, postImage : UIImage, completion : @escaping () -> ()){
         var data = NSData()
         data = postImage.jpegData(compressionQuality: 100)! as NSData
-        var imageSize: Int = data.length / 1024
+        let imageSize: Int = data.length / 1024
         print("size of image in KB: %d ", imageSize)
         if (imageSize > 1000 && imageSize < 3000)
         {

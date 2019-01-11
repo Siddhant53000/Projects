@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 import Lottie
-class loginViewController: UIViewController {
+class loginViewController: UIViewController,  UITextFieldDelegate {
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var signupView: UIView!
@@ -48,7 +48,8 @@ class loginViewController: UIViewController {
         
         animationView.play()
         signupView.bringSubviewToFront(signupLabel)
-        
+        self.usernameField.delegate = self
+        self.passwordField.delegate = self
         // Do any additional setup after loading the view.
     }
    
@@ -63,7 +64,18 @@ class loginViewController: UIViewController {
         
        
         Auth.auth().signIn(withEmail: self.usernameField.text!, password: self.passwordField.text!) { (user, error) in
-            
+            if (user == nil)
+            {
+                let alert = UIAlertController(title: "Sorry! invalid email or password", message: nil, preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                    
+                  return
+                }))
+                
+                self.present(alert, animated: true)
+                return
+            }
             let userID = Auth.auth().currentUser!.uid
             let defaults = UserDefaults.standard
             defaults.set(userID, forKey: "uID")
@@ -72,7 +84,10 @@ class loginViewController: UIViewController {
         }
         
     }
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
     /*
     // MARK: - Navigation
 

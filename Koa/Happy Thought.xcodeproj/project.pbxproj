@@ -57,12 +57,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E047EC521E1461300317DC4 /* Happy Thought.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Happy Thought.entitlements"; sourceTree = "<group>"; };
 		0E37C19321800B83000A38F9 /* signupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signupViewController.swift; sourceTree = "<group>"; };
 		0E37C19521800DF4000A38F9 /* soda_loader.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = soda_loader.json; sourceTree = "<group>"; };
 		0E37C19721801289000A38F9 /* flow.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = flow.json; sourceTree = "<group>"; };
 		0E37C19821801289000A38F9 /* bms-rocket.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "bms-rocket.json"; sourceTree = "<group>"; };
 		0E37C19B21801487000A38F9 /* rocket.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rocket.json; sourceTree = "<group>"; };
-		0E5FFE082175803A0001EF11 /* Koa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Koa.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E5FFE082175803A0001EF11 /* Happy Thought.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Happy Thought.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E5FFE0B2175803A0001EF11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E5FFE0D2175803A0001EF11 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0E5FFE102175803A0001EF11 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -70,7 +71,7 @@
 		0E5FFE152175803B0001EF11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0E5FFE182175803B0001EF11 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0E5FFE1A2175803B0001EF11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0E5FFE1F2175803B0001EF11 /* KoaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KoaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E5FFE1F2175803B0001EF11 /* Happy ThoughtTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Happy ThoughtTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E5FFE232175803B0001EF11 /* KoaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoaTests.swift; sourceTree = "<group>"; };
 		0E5FFE252175803B0001EF11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E5FFE2E21758BC80001EF11 /* heart_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = heart_animation.json; sourceTree = "<group>"; };
@@ -144,7 +145,7 @@
 		0E5FFDFF2175803A0001EF11 = {
 			isa = PBXGroup;
 			children = (
-				0E5FFE0A2175803A0001EF11 /* Koa */,
+				0E5FFE0A2175803A0001EF11 /* Happy Thought */,
 				0E5FFE222175803B0001EF11 /* KoaTests */,
 				0E5FFE092175803A0001EF11 /* Products */,
 				9713E36FBD7D837B06F8939E /* Pods */,
@@ -155,15 +156,16 @@
 		0E5FFE092175803A0001EF11 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0E5FFE082175803A0001EF11 /* Koa.app */,
-				0E5FFE1F2175803B0001EF11 /* KoaTests.xctest */,
+				0E5FFE082175803A0001EF11 /* Happy Thought.app */,
+				0E5FFE1F2175803B0001EF11 /* Happy ThoughtTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0E5FFE0A2175803A0001EF11 /* Koa */ = {
+		0E5FFE0A2175803A0001EF11 /* Happy Thought */ = {
 			isa = PBXGroup;
 			children = (
+				0E047EC521E1461300317DC4 /* Happy Thought.entitlements */,
 				0E37C19221800B56000A38F9 /* Views */,
 				0E604EFF217A61D900F99850 /* GoogleService-Info.plist */,
 				0EBF7EEA2176D6B40003E791 /* lottie Jsons */,
@@ -177,7 +179,7 @@
 				0E604EF42179742900F99850 /* memoriesTableViewCell.xib */,
 				0E8C18BA2187F3DA00BCDF9D /* networkManager.swift */,
 			);
-			path = Koa;
+			path = "Happy Thought";
 			sourceTree = "<group>";
 		};
 		0E5FFE222175803B0001EF11 /* KoaTests */ = {
@@ -234,9 +236,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0E5FFE072175803A0001EF11 /* Koa */ = {
+		0E5FFE072175803A0001EF11 /* Happy Thought */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0E5FFE282175803B0001EF11 /* Build configuration list for PBXNativeTarget "Koa" */;
+			buildConfigurationList = 0E5FFE282175803B0001EF11 /* Build configuration list for PBXNativeTarget "Happy Thought" */;
 			buildPhases = (
 				0ADA79A0274217F72BF6708A /* [CP] Check Pods Manifest.lock */,
 				0E5FFE042175803A0001EF11 /* Sources */,
@@ -248,14 +250,14 @@
 			);
 			dependencies = (
 			);
-			name = Koa;
+			name = "Happy Thought";
 			productName = Koa;
-			productReference = 0E5FFE082175803A0001EF11 /* Koa.app */;
+			productReference = 0E5FFE082175803A0001EF11 /* Happy Thought.app */;
 			productType = "com.apple.product-type.application";
 		};
-		0E5FFE1E2175803B0001EF11 /* KoaTests */ = {
+		0E5FFE1E2175803B0001EF11 /* Happy ThoughtTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0E5FFE2B2175803B0001EF11 /* Build configuration list for PBXNativeTarget "KoaTests" */;
+			buildConfigurationList = 0E5FFE2B2175803B0001EF11 /* Build configuration list for PBXNativeTarget "Happy ThoughtTests" */;
 			buildPhases = (
 				D8F063C99CD6B583B8F30177 /* [CP] Check Pods Manifest.lock */,
 				0E5FFE1B2175803B0001EF11 /* Sources */,
@@ -267,9 +269,9 @@
 			dependencies = (
 				0E5FFE212175803B0001EF11 /* PBXTargetDependency */,
 			);
-			name = KoaTests;
+			name = "Happy ThoughtTests";
 			productName = KoaTests;
-			productReference = 0E5FFE1F2175803B0001EF11 /* KoaTests.xctest */;
+			productReference = 0E5FFE1F2175803B0001EF11 /* Happy ThoughtTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -284,6 +286,11 @@
 				TargetAttributes = {
 					0E5FFE072175803A0001EF11 = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					0E5FFE1E2175803B0001EF11 = {
 						CreatedOnToolsVersion = 10.0;
@@ -291,7 +298,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 0E5FFE032175803A0001EF11 /* Build configuration list for PBXProject "Koa" */;
+			buildConfigurationList = 0E5FFE032175803A0001EF11 /* Build configuration list for PBXProject "Happy Thought" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -304,8 +311,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0E5FFE072175803A0001EF11 /* Koa */,
-				0E5FFE1E2175803B0001EF11 /* KoaTests */,
+				0E5FFE072175803A0001EF11 /* Happy Thought */,
+				0E5FFE1E2175803B0001EF11 /* Happy ThoughtTests */,
 			);
 		};
 /* End PBXProject section */
@@ -475,7 +482,7 @@
 /* Begin PBXTargetDependency section */
 		0E5FFE212175803B0001EF11 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 0E5FFE072175803A0001EF11 /* Koa */;
+			target = 0E5FFE072175803A0001EF11 /* Happy Thought */;
 			targetProxy = 0E5FFE202175803B0001EF11 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -621,17 +628,19 @@
 			baseConfigurationReference = D61A6B44670F56E5C2BAF036 /* Pods-Koa.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Happy Thought/Happy Thought.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7Z8R8KBJXX;
-				INFOPLIST_FILE = Koa/Info.plist;
+				DEVELOPMENT_TEAM = KAFS2T3NJ7;
+				INFOPLIST_FILE = "Happy Thought/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.LyxLLC.Koa;
+				PRODUCT_BUNDLE_IDENTIFIER = com.LyxLLC.happyThought;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -640,17 +649,19 @@
 			baseConfigurationReference = 606407569770DFA63BBA30E7 /* Pods-Koa.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Happy Thought/Happy Thought.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7Z8R8KBJXX;
-				INFOPLIST_FILE = Koa/Info.plist;
+				DEVELOPMENT_TEAM = KAFS2T3NJ7;
+				INFOPLIST_FILE = "Happy Thought/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.LyxLLC.Koa;
+				PRODUCT_BUNDLE_IDENTIFIER = com.LyxLLC.happyThought;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -672,7 +683,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Koa.app/Koa";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Happy Thought.app/Happy Thought";
 			};
 			name = Debug;
 		};
@@ -694,14 +705,14 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Koa.app/Koa";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Happy Thought.app/Happy Thought";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0E5FFE032175803A0001EF11 /* Build configuration list for PBXProject "Koa" */ = {
+		0E5FFE032175803A0001EF11 /* Build configuration list for PBXProject "Happy Thought" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0E5FFE262175803B0001EF11 /* Debug */,
@@ -710,7 +721,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0E5FFE282175803B0001EF11 /* Build configuration list for PBXNativeTarget "Koa" */ = {
+		0E5FFE282175803B0001EF11 /* Build configuration list for PBXNativeTarget "Happy Thought" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0E5FFE292175803B0001EF11 /* Debug */,
@@ -719,7 +730,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0E5FFE2B2175803B0001EF11 /* Build configuration list for PBXNativeTarget "KoaTests" */ = {
+		0E5FFE2B2175803B0001EF11 /* Build configuration list for PBXNativeTarget "Happy ThoughtTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0E5FFE2C2175803B0001EF11 /* Debug */,

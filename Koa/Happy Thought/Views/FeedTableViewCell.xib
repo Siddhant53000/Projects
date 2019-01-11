@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -11,38 +11,37 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="355" id="KGk-i7-Jjw" customClass="FeedTableViewCell" customModule="Koa" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="380" height="355"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="311" id="KGk-i7-Jjw" customClass="FeedTableViewCell" customModule="Koa" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="309" height="311"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="380" height="354.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="309" height="310.66666666666669"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screen Shot 2015-11-14 at 12.34.51 PM" translatesAutoresizingMaskIntoConstraints="NO" id="nxb-28-38b">
-                        <rect key="frame" x="0.0" y="10" width="380" height="238"/>
+                        <rect key="frame" x="0.0" y="10" width="309" height="193.66666666666666"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="nxb-28-38b" secondAttribute="height" multiplier="399:250" id="fff-gv-ilh"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pDa-8B-xOv">
-                        <rect key="frame" x="6" y="258" width="368" height="86"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="FeedTableViewCell" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pDa-8B-xOv">
+                        <rect key="frame" x="16" y="213.66666666666666" width="277" height="42.333333333333343"/>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut </string>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
-                <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="0.32000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                <color key="backgroundColor" red="0.45138680930000002" green="0.99309605359999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
-                    <constraint firstItem="pDa-8B-xOv" firstAttribute="top" secondItem="nxb-28-38b" secondAttribute="bottom" constant="10" id="0dw-4s-pAg"/>
-                    <constraint firstAttribute="trailing" secondItem="nxb-28-38b" secondAttribute="trailing" id="4Lc-Yo-flD"/>
-                    <constraint firstItem="nxb-28-38b" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="T4u-gX-eO2"/>
-                    <constraint firstItem="nxb-28-38b" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="bvb-TT-ekf"/>
-                    <constraint firstItem="pDa-8B-xOv" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="10" id="lIc-06-aBd"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="pDa-8B-xOv" secondAttribute="bottom" id="oVl-Vl-hd6"/>
-                    <constraint firstItem="pDa-8B-xOv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-10" id="sMC-Pa-958"/>
+                    <constraint firstItem="nxb-28-38b" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="1JZ-kX-K2n"/>
+                    <constraint firstItem="nxb-28-38b" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="7IR-kZ-xtA"/>
+                    <constraint firstItem="pDa-8B-xOv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Qyc-5G-6JI"/>
+                    <constraint firstItem="pDa-8B-xOv" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" constant="-10" id="UBf-Hv-nxP"/>
+                    <constraint firstItem="pDa-8B-xOv" firstAttribute="top" secondItem="nxb-28-38b" secondAttribute="bottom" constant="10" id="bJ1-Xu-wzo"/>
+                    <constraint firstItem="pDa-8B-xOv" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="ftt-nu-gis"/>
+                    <constraint firstAttribute="trailing" secondItem="nxb-28-38b" secondAttribute="trailing" id="joO-o7-QLe"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -50,7 +49,7 @@
                 <outlet property="postImage" destination="nxb-28-38b" id="CYj-XP-Cbz"/>
                 <outlet property="postText" destination="pDa-8B-xOv" id="4la-dj-Tha"/>
             </connections>
-            <point key="canvasLocation" x="121.59999999999999" y="58.020989505247378"/>
+            <point key="canvasLocation" x="162.40000000000001" y="-50.824587706146929"/>
         </tableViewCell>
     </objects>
     <resources>

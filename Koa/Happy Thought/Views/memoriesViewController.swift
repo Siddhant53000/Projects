@@ -13,20 +13,24 @@ import FirebaseUI
 class memoriesViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
     
     @IBOutlet weak var memoriesTable: UITableView!
-    @IBOutlet weak var postTypeSegment: UISegmentedControl!
+    @IBOutlet weak var inspirationsButton: UIView!
+    @IBOutlet weak var thoughtsButton: UIView!
+    
     var db: Firestore!
     var cellArray : Array<UIImage>?
     var textPostArray : Array<String>?
+    var imagePostArray : Array<Dictionary<String,Any>>?
     var expandedCellArray : Set<Int>?
     var count : Int = 0
+    var currentSelection : Int = 0
     //Table view methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (self.postTypeSegment.selectedSegmentIndex == 0 )
+        if (self.currentSelection == 0 )
         {
             return self.count
         
         }
-        if (self.postTypeSegment.selectedSegmentIndex == 2)
+        if (self.currentSelection == 1)
         {
             return textPostArray?.count ?? 0
         }
@@ -36,21 +40,23 @@ class memoriesViewController: UIViewController, UITableViewDelegate,UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if (self.postTypeSegment.selectedSegmentIndex == 2)                     //TEXT POSTS
+        if (self.currentSelection == 1)                     //TEXT POSTS
         {
-            let cell = Bundle.main.loadNibNamed("textPostTableViewCell", owner: self)?.first as! textPostTableViewCell
-            DispatchQueue.main.async {
+            
+            let cell = Bundle.main.loadNibNamed("textPostTableViewCell",owner: indexPath)?.first as!  textPostTableViewCell
+
+         //   DispatchQueue.main.async {
                // cell.postImage.image = self.cellArray?[0]
+                cell.postText.numberOfLines = 0
                 cell.postText.text = self.textPostArray?[indexPath.row]
                 
-            }
+            //}
             return cell
         }
         
         
         //IMAGE FEED CELLS
         let cell = Bundle.main.loadNibNamed("FeedTableViewCell", owner: self)?.first as! FeedTableViewCell
-        DispatchQueue.main.async {
             let storage = Storage.storage()
             let storageRef = storage.reference()
             //var ref: DocumentReference? = nil
@@ -63,77 +69,71 @@ class memoriesViewController: UIViewController, UITableViewDelegate,UITableViewD
             let placeholderImage = UIImage(named: "placeholder.jpg")
             // Load the image using SDWebImage
             imageView.sd_setImage(with: reference, placeholderImage: placeholderImage)
+            var currentPost = self.imagePostArray?[indexPath.row]
+            if (currentPost?["post"] as! String != "none")
+            {
+                cell.postText.text = currentPost?["post"] as? String
+            }
 //            cell.postText.layer.borderColor = UIColor.blue.cgColor
 //            cell.postText.layer.borderWidth = 1.0
-            cell.postText.layer.cornerRadius = 10
-            cell.postText.text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."
-            
-        }
+            //cell.postText.layer.cornerRadius = 10
         return cell
     }
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        expandedCellArray?.insert(indexPath.row)
-//        tableView.reloadData()
-//    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-       if (self.postTypeSegment.selectedSegmentIndex == 2)
-        {
-//            if (expandedCellArray?.contains(indexPath.row) ?? false)
-//            {
-//                return UITableView.automaticDimension
-//            }
-//
-                return UITableView.automaticDimension
-        }
-        return 409
+        return UITableView.automaticDimension
     }
 
-    @IBAction func changePostType(_ sender: UISegmentedControl) {
-        switch postTypeSegment.selectedSegmentIndex{
-        case 0:
-        print (1)
-            self.memoriesTable.reloadData()
-        case 1:
-            print (2)
-        case 2:
-            networkManager.sharedInstance.getPosts { (success, textPosts, error) in
-                self.textPostArray = textPosts as? Array<String>
-                self.memoriesTable.reloadData()
-            }
-        default:
-            break;
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let firstImage = #imageLiteral(resourceName: "IMG_3864")
-       
-        cellArray?.append(firstImage)
+        self.thoughtsButton.layer.borderWidth = 1;
+        self.thoughtsButton.layer.borderColor = UIColor.black.cgColor
+        self.thoughtsButton.layer.cornerRadius = 5
+        self.thoughtsButton.clipsToBounds = true
+        self.inspirationsButton.layer.borderWidth = 1
+        self.inspirationsButton.layer.borderColor = UIColor.black.cgColor
+        self.inspirationsButton.layer.cornerRadius = 5
+        self.inspirationsButton.clipsToBounds = true
         memoriesTable.delegate = self
         memoriesTable.dataSource = self
-        memoriesTable.rowHeight = UITableView.automaticDimension
-        memoriesTable.estimatedRowHeight = 355
-        networkManager.sharedInstance.getCount { (success, count, error) in
-            self.count = count ?? 0
-            networkManager.sharedInstance.getImagePosts(completion: { (success, posts, error) in
-                
-                self.memoriesTable.reloadData()
-            })
-        }
-        
-        // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {
         networkManager.sharedInstance.getCount { (success, count, error) in
             self.count = count ?? 0
             networkManager.sharedInstance.getImagePosts(completion: { (success, posts, error) in
-                
+                self.imagePostArray = posts as? Array<Dictionary<String, Any>>
                 self.memoriesTable.reloadData()
             })
         }
     }
+    
+    
  
+    @IBAction func inspirationsSelected(_ sender: Any) {
+        
+        self.currentSelection = 0
+        networkManager.sharedInstance.getCount { (success, count, error) in
+            self.count = count ?? 0
+            networkManager.sharedInstance.getImagePosts(completion: { (success, posts, error) in
+                self.imagePostArray = posts as? Array<Dictionary<String, Any>>
+                self.memoriesTable.reloadData()
+            })
+        }
+        self.inspirationsButton.backgroundColor = UIColor(red: 118/255.0, green: 214/255.0, blue: 255/255.0, alpha: 1.00)
+        self.thoughtsButton.backgroundColor = UIColor.white
+    }
+    @IBAction func thoughtsSelected(_ sender: Any) {
+    self.currentSelection = 1
+    self.thoughtsButton.backgroundColor = UIColor(red: 118/255.0, green: 214/255.0, blue: 255/255.0, alpha: 1.00)
+    self.inspirationsButton.backgroundColor = UIColor.white
+    networkManager.sharedInstance.getPosts { (success, textPosts, error) in
+            self.textPostArray = textPosts as? Array<String>
+            self.memoriesTable.reloadData()
+        }
+    }
     /*
     // MARK: - Navigation
 

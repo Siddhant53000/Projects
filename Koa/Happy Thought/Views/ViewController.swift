@@ -13,7 +13,19 @@ class ViewController: UIViewController {
     @IBOutlet weak var happyButton: UIButton!
     @IBOutlet weak var addButton: UIButton!
     var dateWasSaved : Bool?
+    var happyAnimationView : LOTAnimationView?
+    var sadAnimationView : LOTAnimationView?
     @IBAction func sadButton(_ sender: Any) {
+        if (self.happyAnimationView != nil)
+        {
+            self.happyAnimationView?.removeFromSuperview()
+            self.happyAnimationView = nil
+        }
+        if (self.sadAnimationView != nil)
+        {
+            self.sadAnimationView?.removeFromSuperview()
+            self.sadAnimationView = nil
+        }
         networkManager.sharedInstance.putHappySad(feeling: "Sad")
         let mViewController:mediaViewController = storyboard?.instantiateViewController(withIdentifier: "mediaViewController") as! mediaViewController
         
@@ -22,6 +34,16 @@ class ViewController: UIViewController {
     }
     
     @IBAction func happyButton(_ sender: Any) {
+        if (self.happyAnimationView != nil)
+        {
+            self.happyAnimationView?.removeFromSuperview()
+            self.happyAnimationView = nil
+        }
+        if (self.sadAnimationView != nil)
+        {
+            self.sadAnimationView?.removeFromSuperview()
+            self.sadAnimationView = nil
+        }
       networkManager.sharedInstance.putHappySad(feeling: "Happy")
         let mViewController:mediaViewController = storyboard?.instantiateViewController(withIdentifier: "mediaViewController") as! mediaViewController
         
@@ -29,6 +51,16 @@ class ViewController: UIViewController {
         
     }
     @objc func handleHappyTap(_ sender: UITapGestureRecognizer) {
+        if (self.happyAnimationView != nil)
+        {
+            self.happyAnimationView?.removeFromSuperview()
+            self.happyAnimationView = nil
+        }
+        if (self.sadAnimationView != nil)
+        {
+            self.sadAnimationView?.removeFromSuperview()
+            self.sadAnimationView = nil
+        }
         networkManager.sharedInstance.putHappySad(feeling: "Happy")
         let mViewController:mediaViewController = storyboard?.instantiateViewController(withIdentifier: "mediaViewController") as! mediaViewController
         
@@ -36,6 +68,16 @@ class ViewController: UIViewController {
     }
     
     @objc func handleSadTap(_ sender: UITapGestureRecognizer) {
+        if (self.happyAnimationView != nil)
+        {
+            self.happyAnimationView?.removeFromSuperview()
+            self.happyAnimationView = nil
+        }
+        if (self.sadAnimationView != nil)
+        {
+            self.sadAnimationView?.removeFromSuperview()
+            self.sadAnimationView = nil
+        }
         networkManager.sharedInstance.putHappySad(feeling: "Sad")
         let mViewController:mediaViewController = storyboard?.instantiateViewController(withIdentifier: "mediaViewController") as! mediaViewController
         
@@ -69,40 +111,40 @@ class ViewController: UIViewController {
         else{
             self.dateWasSaved = false
            // happyButton.backgroundColor = UIColor(red: 248, green: 67.0, blue: 83)
-            let happyAnimationView = LOTAnimationView(name: "heart_animation")
+            happyAnimationView = LOTAnimationView(name: "heart_animation")
             happyButton.backgroundColor = UIColor(
                 red: CGFloat( 248/255.0),
                 green: CGFloat(67/255.0),
                 blue: CGFloat(83/255.0),
                 alpha: CGFloat(1.0)
             )
-            happyAnimationView.frame = CGRect(x: self.view.frame.width/2, y: 0, width: self.view.frame.width/2, height: self.view.frame.height)
+            happyAnimationView?.frame = CGRect(x: self.view.frame.width/2, y: 0, width: self.view.frame.width/2, height: self.view.frame.height)
          //   animationView.center = self.view.center
-            happyAnimationView.contentMode = .scaleAspectFit
-            happyAnimationView.loopAnimation = true
-            view.addSubview(happyAnimationView)
+            happyAnimationView?.contentMode = .scaleAspectFit
+            happyAnimationView?.loopAnimation = true
+            view.addSubview(happyAnimationView!)
             let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleHappyTap(_:)))
             
-            happyAnimationView.addGestureRecognizer(tap)
+            happyAnimationView?.addGestureRecognizer(tap)
             
-            happyAnimationView.isUserInteractionEnabled = true
-            happyAnimationView.play()
+            happyAnimationView?.isUserInteractionEnabled = true
+            happyAnimationView?.play()
         
            
-            let sadAnimationView = LOTAnimationView(name: "unhappy_french_fries")
-            sadAnimationView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width/2, height: self.view.frame.height)
+            sadAnimationView = LOTAnimationView(name: "unhappy_french_fries")
+            sadAnimationView?.frame = CGRect(x: 0, y: 0, width: self.view.frame.width/2, height: self.view.frame.height)
           //  animationView.center = self.view.center
-            sadAnimationView.contentMode = .scaleAspectFit
-            sadAnimationView.loopAnimation = true
+            sadAnimationView!.contentMode = .scaleAspectFit
+            sadAnimationView?.loopAnimation = true
             let tap2 = UITapGestureRecognizer(target: self, action: #selector(self.handleSadTap(_:)))
             
-            sadAnimationView.addGestureRecognizer(tap2)
+            sadAnimationView?.addGestureRecognizer(tap2)
             
-            sadAnimationView.isUserInteractionEnabled = true
+            sadAnimationView?.isUserInteractionEnabled = true
             
-            view.addSubview(sadAnimationView)
+            view.addSubview(sadAnimationView!)
             
-            sadAnimationView.play()
+            sadAnimationView?.play()
             addButton.isHidden = true
         }
         
