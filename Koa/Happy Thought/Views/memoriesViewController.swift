@@ -101,12 +101,25 @@ class memoriesViewController: UIViewController, UITableViewDelegate,UITableViewD
         memoriesTable.dataSource = self
     }
     override func viewDidAppear(_ animated: Bool) {
-        networkManager.sharedInstance.getCount { (success, count, error) in
-            self.count = count ?? 0
-            networkManager.sharedInstance.getImagePosts(completion: { (success, posts, error) in
-                self.imagePostArray = posts as? Array<Dictionary<String, Any>>
-                self.memoriesTable.reloadData()
-            })
+        let defaults = UserDefaults.standard
+        let uID : String? = defaults.string(forKey: "uID")
+        if (uID == nil)
+        {
+            self.thoughtsButton.isUserInteractionEnabled = false
+            self.inspirationsButton.isUserInteractionEnabled = false
+            let alert = UIAlertController(title: "Hey There!", message: "Please Login to use our great features!", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        else{
+            networkManager.sharedInstance.getCount { (success, count, error) in
+                self.count = count ?? 0
+                networkManager.sharedInstance.getImagePosts(completion: { (success, posts, error) in
+                    self.imagePostArray = posts as? Array<Dictionary<String, Any>>
+                    self.memoriesTable.reloadData()
+                })
+            }
+            
         }
     }
     

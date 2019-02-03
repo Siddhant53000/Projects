@@ -13,6 +13,8 @@ class signupViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var animationView: UIView!
+    @IBOutlet weak var signupBtn: UIButton!
+    @IBOutlet weak var cancelBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +30,10 @@ class signupViewController: UIViewController, UITextFieldDelegate {
         self.usernameField.delegate = self
         self.passwordField.delegate = self
         animationView.play()
+        signupBtn.layer.cornerRadius = 20
+        signupBtn.clipsToBounds = true
+        cancelBtn.layer.cornerRadius = 20
+        cancelBtn.clipsToBounds = true
         // Do any additional setup after loading the view.
     }
     
@@ -46,6 +52,7 @@ class signupViewController: UIViewController, UITextFieldDelegate {
                 self.present(alert, animated: true)
                 return
             }
+            Auth.auth().currentUser!.sendEmailVerification(completion: nil)
             Auth.auth().signIn(withEmail: self.usernameField.text!, password: self.passwordField.text!) { (user, error) in
                 
                 let userID = Auth.auth().currentUser!.uid
@@ -65,6 +72,11 @@ class signupViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
+    }
+    
+    
+    @IBAction func cancelSignIn(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     /*

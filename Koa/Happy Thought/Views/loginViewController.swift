@@ -15,7 +15,9 @@ class loginViewController: UIViewController,  UITextFieldDelegate {
     @IBOutlet weak var signupView: UIView!
     @IBOutlet weak var animationView: UIView!
     @IBOutlet weak var signupLabel: UILabel!
+    @IBOutlet weak var cancelBtn: UIButton!
     
+    @IBOutlet weak var signinBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         let signupAnimationView = LOTAnimationView(name: "soda_loader")
@@ -50,6 +52,10 @@ class loginViewController: UIViewController,  UITextFieldDelegate {
         signupView.bringSubviewToFront(signupLabel)
         self.usernameField.delegate = self
         self.passwordField.delegate = self
+        signinBtn.layer.cornerRadius = 20
+        signinBtn.clipsToBounds = true
+        cancelBtn.layer.cornerRadius = 20
+        cancelBtn.clipsToBounds = true
         // Do any additional setup after loading the view.
     }
    
@@ -64,6 +70,18 @@ class loginViewController: UIViewController,  UITextFieldDelegate {
         
        
         Auth.auth().signIn(withEmail: self.usernameField.text!, password: self.passwordField.text!) { (user, error) in
+            if (!Auth.auth().currentUser!.isEmailVerified)
+            {
+                let alert = UIAlertController(title: "Oh Bother!", message: "Your email isn't verified!", preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                    
+                    return
+                }))
+                
+                self.present(alert, animated: true)
+                return
+            }
             if (user == nil)
             {
                 let alert = UIAlertController(title: "Sorry! invalid email or password", message: nil, preferredStyle: .alert)
@@ -88,6 +106,11 @@ class loginViewController: UIViewController,  UITextFieldDelegate {
         self.view.endEditing(true)
         return false
     }
+    
+    @IBAction func cancelSignIn(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 

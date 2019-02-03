@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,7 +13,7 @@
         <!--Day-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Koa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Happy_Thought" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -87,7 +88,7 @@
         <!--Media View Controller-->
         <scene sceneID="p69-xj-QGg">
             <objects>
-                <viewController storyboardIdentifier="mediaViewController" id="qmI-3R-WB2" customClass="mediaViewController" customModule="Koa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mediaViewController" id="qmI-3R-WB2" customClass="mediaViewController" customModule="Happy_Thought" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JYX-M0-JR3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -204,7 +205,7 @@
         <!--Memories-->
         <scene sceneID="OtR-HM-vlj">
             <objects>
-                <viewController id="DWU-gx-iFA" customClass="memoriesViewController" customModule="Koa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="DWU-gx-iFA" customClass="memoriesViewController" customModule="Happy_Thought" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fE6-VA-PUE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -298,7 +299,7 @@
         <!--Signup View Controller-->
         <scene sceneID="1A1-ZF-QgV">
             <objects>
-                <viewController storyboardIdentifier="signupViewController" id="bP0-Ks-ZpM" customClass="signupViewController" customModule="Koa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signupViewController" id="bP0-Ks-ZpM" customClass="signupViewController" customModule="Happy_Thought" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1yv-wo-NkK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -327,28 +328,27 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nSe-Hl-CaI">
                                 <rect key="frame" x="16" y="484" width="382" height="55"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="backgroundColor" red="0.46274509800000002" green="0.83921568629999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="iqw-vJ-yp3"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
                                 <state key="normal" title="Cancel">
-                                    <color key="titleColor" red="0.0" green="0.99143940210000003" blue="1" alpha="0.73697024828767121" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
                                     <action selector="cancelBtn:" destination="bP0-Ks-ZpM" eventType="touchUpInside" id="l1y-h6-Oon"/>
-                                    <action selector="signUp:" destination="rZW-0L-pIk" eventType="touchUpInside" id="E7X-TQ-wUz"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IFJ-xb-OMu">
                                 <rect key="frame" x="16" y="411" width="382" height="55"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="backgroundColor" red="0.46274509800000002" green="0.83921568629999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="LmX-Qt-Oyl"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
                                 <state key="normal" title="Signup">
-                                    <color key="titleColor" red="0.0" green="0.99143940210000003" blue="1" alpha="0.73697024830000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
                                     <action selector="signUp:" destination="rZW-0L-pIk" eventType="touchUpInside" id="nOd-YS-I4g"/>
@@ -378,7 +378,9 @@
                     </view>
                     <connections>
                         <outlet property="animationView" destination="8Kh-pq-g6o" id="gHe-Ec-Seh"/>
+                        <outlet property="cancelBtn" destination="nSe-Hl-CaI" id="qJp-Ay-ciB"/>
                         <outlet property="passwordField" destination="6n9-kl-62m" id="Kjz-sv-p3N"/>
+                        <outlet property="signupBtn" destination="IFJ-xb-OMu" id="zDU-PN-Ylc"/>
                         <outlet property="usernameField" destination="0U4-IU-OxW" id="LA2-5o-9ce"/>
                     </connections>
                 </viewController>
@@ -389,7 +391,7 @@
         <!--Login View Controller-->
         <scene sceneID="zkD-vm-ix9">
             <objects>
-                <viewController storyboardIdentifier="loginViewController" id="rZW-0L-pIk" customClass="loginViewController" customModule="Koa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginViewController" id="rZW-0L-pIk" customClass="loginViewController" customModule="Happy_Thought" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="llS-ne-6px">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -439,16 +441,30 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8sC-gg-bmp">
                                 <rect key="frame" x="16" y="389" width="382" height="55"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="backgroundColor" red="0.46274509800000002" green="0.83921568629999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="aEZ-fF-QMh"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
                                 <state key="normal" title="Signin">
-                                    <color key="titleColor" red="0.0" green="0.99143940210000003" blue="1" alpha="0.73697024830000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
                                     <action selector="signUp:" destination="rZW-0L-pIk" eventType="touchUpInside" id="Tgp-va-yjE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVU-YO-NCk">
+                                <rect key="frame" x="16" y="462" width="382" height="55"/>
+                                <color key="backgroundColor" red="0.46274509800000002" green="0.83921568629999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="RHG-UF-hv5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelSignIn:" destination="rZW-0L-pIk" eventType="touchUpInside" id="UQG-qe-LOM"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -463,17 +479,22 @@
                             <constraint firstItem="29u-CD-HX3" firstAttribute="bottom" secondItem="PMe-7y-5yC" secondAttribute="bottom" constant="20" id="IPo-vg-rcl"/>
                             <constraint firstItem="KKN-xg-vcb" firstAttribute="trailing" secondItem="29u-CD-HX3" secondAttribute="trailing" id="LT6-dh-2MK"/>
                             <constraint firstItem="8sC-gg-bmp" firstAttribute="top" secondItem="Rey-Pr-yAa" secondAttribute="bottom" constant="25" id="S5H-Tq-Jhf"/>
+                            <constraint firstItem="xVU-YO-NCk" firstAttribute="top" secondItem="8sC-gg-bmp" secondAttribute="bottom" constant="18" id="Tca-rf-RQ8"/>
                             <constraint firstItem="Rey-Pr-yAa" firstAttribute="leading" secondItem="29u-CD-HX3" secondAttribute="leading" constant="16" id="VVX-np-sr6"/>
                             <constraint firstItem="29u-CD-HX3" firstAttribute="trailing" secondItem="Rey-Pr-yAa" secondAttribute="trailing" constant="16" id="WSZ-Rc-lr2"/>
+                            <constraint firstItem="29u-CD-HX3" firstAttribute="trailing" secondItem="xVU-YO-NCk" secondAttribute="trailing" constant="16" id="k3f-VU-9WC"/>
                             <constraint firstItem="8sC-gg-bmp" firstAttribute="leading" secondItem="29u-CD-HX3" secondAttribute="leading" constant="16" id="qvQ-XN-WiZ"/>
                             <constraint firstItem="29u-CD-HX3" firstAttribute="trailing" secondItem="KvN-8g-fZ8" secondAttribute="trailing" constant="16" id="uSY-dn-NmQ"/>
                             <constraint firstItem="KKN-xg-vcb" firstAttribute="top" secondItem="llS-ne-6px" secondAttribute="top" id="xyu-lu-nlu"/>
+                            <constraint firstItem="xVU-YO-NCk" firstAttribute="leading" secondItem="llS-ne-6px" secondAttribute="leading" constant="16" id="zfO-NC-gjH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="29u-CD-HX3"/>
                     </view>
                     <connections>
                         <outlet property="animationView" destination="KKN-xg-vcb" id="lzO-bM-rYJ"/>
+                        <outlet property="cancelBtn" destination="xVU-YO-NCk" id="BH3-Nk-nim"/>
                         <outlet property="passwordField" destination="Rey-Pr-yAa" id="rco-tD-QXX"/>
+                        <outlet property="signinBtn" destination="8sC-gg-bmp" id="Im0-yX-Z4q"/>
                         <outlet property="signupLabel" destination="gGC-vD-raR" id="7rp-1s-V10"/>
                         <outlet property="signupView" destination="PMe-7y-5yC" id="Jyn-Tv-y0c"/>
                         <outlet property="usernameField" destination="KvN-8g-fZ8" id="nax-wm-py5"/>
@@ -486,7 +507,7 @@
         <!--Post With Image View Controller 2-->
         <scene sceneID="sXf-Pb-fpe">
             <objects>
-                <viewController storyboardIdentifier="postWithImageViewController" id="dfw-sp-wiY" userLabel="Post With Image View Controller 2" customClass="postWithImageViewController" customModule="Koa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="postWithImageViewController" id="dfw-sp-wiY" userLabel="Post With Image View Controller 2" customClass="postWithImageViewController" customModule="Happy_Thought" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YQE-ao-ilh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

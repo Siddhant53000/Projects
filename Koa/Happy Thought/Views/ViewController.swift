@@ -15,7 +15,9 @@ class ViewController: UIViewController {
     var dateWasSaved : Bool?
     var happyAnimationView : LOTAnimationView?
     var sadAnimationView : LOTAnimationView?
-    @IBAction func sadButton(_ sender: Any) {
+    var loginShown  = 0
+    var animationAdded = 0
+    @IBAction func sadButton(_ sender: Any) {   //sad thought for the day
         if (self.happyAnimationView != nil)
         {
             self.happyAnimationView?.removeFromSuperview()
@@ -33,7 +35,7 @@ class ViewController: UIViewController {
         
     }
     
-    @IBAction func happyButton(_ sender: Any) {
+    @IBAction func happyButton(_ sender: Any) {     //happy thought for the day
         if (self.happyAnimationView != nil)
         {
             self.happyAnimationView?.removeFromSuperview()
@@ -50,6 +52,8 @@ class ViewController: UIViewController {
         self.present(mViewController, animated: true, completion: nil)
         
     }
+    
+    //handling taps on both views
     @objc func handleHappyTap(_ sender: UITapGestureRecognizer) {
         if (self.happyAnimationView != nil)
         {
@@ -83,6 +87,8 @@ class ViewController: UIViewController {
         
         self.present(mViewController, animated: true, completion: nil)
     }
+    
+    //If user wanted more images for the day
     @IBAction func addButtonTap(_ sender: Any) {
         let mViewController:mediaViewController = storyboard?.instantiateViewController(withIdentifier: "mediaViewController") as! mediaViewController
         
@@ -154,15 +160,12 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         let defaults = UserDefaults.standard
         let uID : String? = defaults.string(forKey: "uID")
-        if (uID == nil)
+        //Adding this becuase APPLE was adamant that there needs to be an option for the user to not login even though the app is pretty much useless without that. HERE YOU GO
+        if ( uID == nil && loginShown == 1 && animationAdded == 0)
         {
-            let loginViewController:loginViewController = storyboard?.instantiateViewController(withIdentifier: "loginViewController") as! loginViewController
-            
-            self.present(loginViewController, animated: true, completion: nil)
-        }
-        
-        let date = NSDate(timeIntervalSince1970: TimeInterval(defaults.integer(forKey: "lastFeelingSet")))
-        if (Calendar.current.isDateInToday(date as Date) && dateWasSaved != true) {
+            for view in self.view.subviews {
+                view.removeFromSuperview()
+            }
             let fullScreenAnimationView = LOTAnimationView(name: "duck_blue_style")
             fullScreenAnimationView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
             //  animationView.center = self.view.center
@@ -170,11 +173,53 @@ class ViewController: UIViewController {
             fullScreenAnimationView.loopAnimation = true
             fullScreenAnimationView.play()
             view.addSubview(fullScreenAnimationView)
+            let signUpbutton = UIButton(frame: CGRect(x: 10, y: 100, width: self.view.frame.width - 20, height: 100))
+            signUpbutton.backgroundColor = UIColor(red: 118/255, green: 214/255, blue: 255/255, alpha: 1)
+
+            signUpbutton.setTitle("Signup", for: .normal)
+            signUpbutton.setTitleColor(UIColor.black, for: .normal)
+            signUpbutton.titleLabel?.font = .systemFont(ofSize: 23)
+            signUpbutton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+            signUpbutton.layer.cornerRadius = 20
+            signUpbutton.clipsToBounds = true
+            self.view.addSubview(signUpbutton)
+            animationAdded = 1
+        }
+        if (uID == nil && loginShown == 0)
+        {
+            let loginViewController:loginViewController = storyboard?.instantiateViewController(withIdentifier: "loginViewController") as! loginViewController
+            
+            self.present(loginViewController, animated: true, completion: nil)
+            loginShown = 1
+            
+            
+            
+        }
+        
+        
+        let date = NSDate(timeIntervalSince1970: TimeInterval(defaults.integer(forKey: "lastFeelingSet")))
+        if (Calendar.current.isDateInToday(date as Date) && dateWasSaved != true && animationAdded == 0) {
+            let fullScreenAnimationView = LOTAnimationView(name: "duck_blue_style")
+            fullScreenAnimationView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+            //  animationView.center = self.view.center
+            fullScreenAnimationView.contentMode = .scaleAspectFit
+            fullScreenAnimationView.loopAnimation = true
+            fullScreenAnimationView.play()
+            view.addSubview(fullScreenAnimationView)
+            animationAdded = 1
             happyButton.isHidden = true
             sadButton.isHidden = true
             self.view.bringSubviewToFront(addButton)
 
         }
+    }
+    
+    //Shwoing login
+    @objc func buttonAction(sender: UIButton!) {
+        let loginViewController:loginViewController = storyboard?.instantiateViewController(withIdentifier: "loginViewController") as! loginViewController
+        
+        self.present(loginViewController, animated: true, completion: nil)
+        loginShown = 1
     }
 }
 
