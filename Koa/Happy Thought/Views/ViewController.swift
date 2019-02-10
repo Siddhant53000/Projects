@@ -12,6 +12,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var sadButton: UIButton!
     @IBOutlet weak var happyButton: UIButton!
     @IBOutlet weak var addButton: UIButton!
+    
+    
+    
     var dateWasSaved : Bool?
     var happyAnimationView : LOTAnimationView?
     var sadAnimationView : LOTAnimationView?
@@ -89,10 +92,19 @@ class ViewController: UIViewController {
     }
     
     //If user wanted more images for the day
-    @IBAction func addButtonTap(_ sender: Any) {
+    
+    
+    @IBAction func addBtn(_ sender: Any) {
         let mViewController:mediaViewController = storyboard?.instantiateViewController(withIdentifier: "mediaViewController") as! mediaViewController
         
         self.present(mViewController, animated: true, completion: nil)
+    }
+    
+    
+    
+    
+    @IBAction func addButtonTap(_ sender: Any) {
+       
     }
     
     override func viewDidLoad() {
@@ -100,6 +112,8 @@ class ViewController: UIViewController {
         //If Happy sad response is received just show landing page animation
         let defaults = UserDefaults.standard
         addButton.layer.cornerRadius = 30
+        addButton.isHidden = true
+        self.view.bringSubviewToFront(addButton)
         let date = NSDate(timeIntervalSince1970: TimeInterval(defaults.integer(forKey: "lastFeelingSet")))
         if (Calendar.current.isDateInToday(date as Date)) {
             let fullScreenAnimationView = LOTAnimationView(name: "duck_blue_style")
@@ -111,6 +125,7 @@ class ViewController: UIViewController {
             view.addSubview(fullScreenAnimationView)
             happyButton.isHidden = true
             sadButton.isHidden = true
+            addButton.isHidden = false
             self.view.bringSubviewToFront(addButton)
             self.dateWasSaved = true
         }
@@ -185,7 +200,7 @@ class ViewController: UIViewController {
             self.view.addSubview(signUpbutton)
             animationAdded = 1
         }
-        if (uID == nil && loginShown == 0)
+        else if (uID == nil && loginShown == 0)
         {
             let loginViewController:loginViewController = storyboard?.instantiateViewController(withIdentifier: "loginViewController") as! loginViewController
             
@@ -196,7 +211,7 @@ class ViewController: UIViewController {
             
         }
         
-        
+        else{
         let date = NSDate(timeIntervalSince1970: TimeInterval(defaults.integer(forKey: "lastFeelingSet")))
         if (Calendar.current.isDateInToday(date as Date) && dateWasSaved != true && animationAdded == 0) {
             let fullScreenAnimationView = LOTAnimationView(name: "duck_blue_style")
@@ -209,9 +224,16 @@ class ViewController: UIViewController {
             animationAdded = 1
             happyButton.isHidden = true
             sadButton.isHidden = true
+            sadButton.removeFromSuperview()
+            happyButton.removeFromSuperview()
+            addButton.isHidden = false;
             self.view.bringSubviewToFront(addButton)
 
+            }
+            
         }
+    }
+    @IBAction func cancel(_ sender: Any) {
     }
     
     //Shwoing login

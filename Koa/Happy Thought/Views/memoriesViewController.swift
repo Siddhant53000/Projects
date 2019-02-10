@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 import FirebaseUI
+import Lottie
 class memoriesViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
     
     @IBOutlet weak var memoriesTable: UITableView!
@@ -23,6 +24,9 @@ class memoriesViewController: UIViewController, UITableViewDelegate,UITableViewD
     var expandedCellArray : Set<Int>?
     var count : Int = 0
     var currentSelection : Int = 0
+    var animation : UIView?
+    
+    
     //Table view methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (self.currentSelection == 0 )
@@ -40,7 +44,12 @@ class memoriesViewController: UIViewController, UITableViewDelegate,UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if (self.currentSelection == 1)                     //TEXT POSTS
+        //Adding the loading animation on first cell load and removing it on last cell load
+      
+     
+      
+        
+        if (self.currentSelection == 1 )                     //TEXT POSTS
         {
             
             let cell = Bundle.main.loadNibNamed("textPostTableViewCell",owner: indexPath)?.first as!  textPostTableViewCell
@@ -49,7 +58,10 @@ class memoriesViewController: UIViewController, UITableViewDelegate,UITableViewD
                // cell.postImage.image = self.cellArray?[0]
                 cell.postText.numberOfLines = 0
                 cell.postText.text = self.textPostArray?[indexPath.row]
-                
+            if (indexPath.row == (textPostArray?.count ?? 0) - 1)
+                {
+                    self.animation?.removeFromSuperview()
+            }
             //}
             return cell
         }
@@ -57,19 +69,34 @@ class memoriesViewController: UIViewController, UITableViewDelegate,UITableViewD
         
         //IMAGE FEED CELLS
         let cell = Bundle.main.loadNibNamed("FeedTableViewCell", owner: self)?.first as! FeedTableViewCell
-            let storage = Storage.storage()
-            let storageRef = storage.reference()
-            //var ref: DocumentReference? = nil
-            let ref = "\(Auth.auth().currentUser!.uid)/\(indexPath.row+1)Image.png"
-            print (ref)
-            let reference = storageRef.child( ref)
-            // UIImageView in your ViewController
-            let imageView: UIImageView = cell.postImage
-            // Placeholder image
-            let placeholderImage = UIImage(named: "placeholder.jpg")
-            // Load the image using SDWebImage
-            imageView.sd_setImage(with: reference, placeholderImage: placeholderImage)
-            var currentPost = self.imagePostArray?[indexPath.row]
+        let storage = Storage.storage()
+        let storageRef = storage.reference()
+        //var ref: DocumentReference? = nil
+        let ref = "\(Auth.auth().currentUser!.uid)/\(indexPath.row+1)Image.png"
+  //      print (ref)
+        let reference = storageRef.child( ref)
+        // UIImageView in your ViewController
+        let imageView: UIImageView = cell.postImage
+        // Placeholder image
+        let placeholderImage = UIImage(named: "placeholder.jpg")
+        // Load the image using SDWebImage
+        imageView.sd_setImage(with: reference, placeholderImage: placeholderImage, completion: { image, error, cacheType, imageURL in
+                self.animation?.removeFromSuperview()
+        })
+
+        var currentPost = self.imagePostArray?[indexPath.row]
+        let timestap = currentPost?["timestamp"]
+        let date = NSDate(timeIntervalSince1970: timestap as! Double)
+    //    print (date)
+        let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd"
+        cell.dateLabel.text = dateFormatter.string(from: date as Date)
+        cell.dateLabel.layer.borderWidth = 3
+        cell.dateLabel.layer.borderColor = UIColor.black.cgColor
+        cell.dateLabel.layer.cornerRadius = 15
+        cell.dateLabel.clipsToBounds = true
+        dateFormatter.dateFormat = "MMMM, YYYY"
+        cell.yearLabel.text = dateFormatter.string(from: date as Date)
             if (currentPost?["post"] as! String != "none")
             {
                 cell.postText.text = currentPost?["post"] as? String
@@ -99,8 +126,27 @@ class memoriesViewController: UIViewController, UITableViewDelegate,UITableViewD
         self.inspirationsButton.clipsToBounds = true
         memoriesTable.delegate = self
         memoriesTable.dataSource = self
+       animation = UIView (frame: CGRect(x: 0, y: 80, width: self.view.frame.width, height: self.view.frame.height-80))
     }
+    
+    
     override func viewDidAppear(_ animated: Bool) {
+        
+        let animationView  = LOTAnimationView(name: "animation-w300-h300")
+        
+            animationView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+            //  animationView.center = self.view.center
+            animationView.contentMode = .scaleAspectFill
+            animationView.loopAnimation = true
+            //animationView.layer.cornerRadius = min(self.view.frame.size.height, self.view.frame.size.width) / 2.0
+            animationView.clipsToBounds = true
+            animationView.backgroundColor = UIColor(red: 118/255, green: 214/255, blue: 255/255, alpha: 1.00)
+            //    self.animationView.addSubview(animationView)
+            //   self.animationView.backgroundColor = UIColor.clear
+        animation?.addSubview(animationView)
+        self.view.addSubview(animation!)
+            animationView.play()
+        
         let defaults = UserDefaults.standard
         let uID : String? = defaults.string(forKey: "uID")
         if (uID == nil)

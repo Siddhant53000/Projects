@@ -11,6 +11,8 @@ import UIKit
 class FeedTableViewCell: UITableViewCell {
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var postText: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var yearLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

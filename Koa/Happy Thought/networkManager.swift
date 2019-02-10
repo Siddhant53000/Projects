@@ -137,7 +137,7 @@ class networkManager{
         var data = NSData()
         data = postImage.jpegData(compressionQuality: 100)! as NSData
         let imageSize: Int = data.length / 1024
-        print("size of image in KB: %d ", imageSize)
+   //     print("size of image in KB: %d ", imageSize)
         if (imageSize > 1000 && imageSize < 3000)
         {
             data = postImage.jpegData(compressionQuality: 0.8)! as NSData
@@ -244,7 +244,7 @@ class networkManager{
             if let document = document, document.exists {
                 let dataDescription = document.data()
                 completion(true,dataDescription?["post"],nil)
-                print(dataDescription as Any)
+     //           print(dataDescription as Any)
             } else {
                 print("Document does not exist")
             }
@@ -273,7 +273,7 @@ class networkManager{
                 let dataDescription = document.data()
                 let count : Int = dataDescription?["Count"] as? Int ?? 0
                 completion(true,count,nil)
-                print(dataDescription as Any)
+   //             print(dataDescription as Any)
             } else {
                 print("Document does not exist")
             }
@@ -294,7 +294,7 @@ class networkManager{
             if let document = document, document.exists {
                 let dataDescription = document.data()
                 completion(true,dataDescription?["post"],nil)
-                print(dataDescription as Any)
+    //            print(dataDescription as Any)
             } else {
                 print("Document does not exist")
             }

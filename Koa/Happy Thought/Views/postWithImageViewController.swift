@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 import Lottie
-class postWithImageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class postWithImageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate {
     var postImage : UIImage?
     var db: Firestore!
     var isKeyboardAppear = false
@@ -25,6 +25,7 @@ class postWithImageViewController: UIViewController, UIImagePickerControllerDele
         super.viewDidLoad()
         
         //Keybaord Setup
+        postText.delegate = self
         self.hideKeyboardWhenTappedAround()
         self.postText.addDoneButtonOnKeyboard()
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -78,7 +79,7 @@ class postWithImageViewController: UIViewController, UIImagePickerControllerDele
         if !isKeyboardAppear {
             if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
                 if self.view.frame.origin.y == 0{
-                    self.view.frame.origin.y -= keyboardSize.height
+                    self.view.frame.origin.y -= keyboardSize.height - 100
                 }
             }
             isKeyboardAppear = true
@@ -89,7 +90,7 @@ class postWithImageViewController: UIViewController, UIImagePickerControllerDele
         if isKeyboardAppear {
             if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
                 if self.view.frame.origin.y != 0{
-                    self.view.frame.origin.y += keyboardSize.height
+                    self.view.frame.origin.y += keyboardSize.height - 100
                 }
             }
             isKeyboardAppear = false
@@ -130,7 +131,7 @@ class postWithImageViewController: UIViewController, UIImagePickerControllerDele
         loadingAnimationView.contentMode = .scaleAspectFill
         loadingAnimationView.loopAnimation = true
         loadingAnimationView.play()
-        loadingView.backgroundColor = UIColor.black
+        loadingView.backgroundColor = UIColor(red: 118/255, green: 214/255, blue: 255/255, alpha: 1)
         loadingView.addSubview(loadingAnimationView)
         //loadingView.backgroundColor = UIColor.blue
         var textToSend : String?
@@ -148,7 +149,7 @@ class postWithImageViewController: UIViewController, UIImagePickerControllerDele
             successAnimationView.contentMode = .scaleAspectFill
             // successAnimationView.loopAnimation = true
             // successAnimationView.play()
-            self.loadingView.backgroundColor = UIColor.black
+            self.loadingView.backgroundColor = UIColor(red: 118/255, green: 214/255, blue: 255/255, alpha: 1)
             self.loadingView.addSubview(successAnimationView)
             
             
@@ -164,7 +165,7 @@ class postWithImageViewController: UIViewController, UIImagePickerControllerDele
             return
             //fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
-        print (selectedImage.size)
+    //    print (selectedImage.size)
         self.postImage = selectedImage
         self.postImgView.image = self.postImage
         
@@ -173,6 +174,30 @@ class postWithImageViewController: UIViewController, UIImagePickerControllerDele
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
+    }
+    func textViewDidBeginEditing(_ textView: UITextView)
+    {
+  //      print(textView.text)
+        if (textView.text == "What is something you are grateful for today?")
+        {
+            textView.text = ""
+            textView.textColor = .black
+        }
+        textView.becomeFirstResponder() //Optional
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView)
+    {
+        if (textView.text == "")
+        {
+            textView.text = "What is something you are grateful for today?"
+            textView.textColor = .lightGray
+        }
+        textView.resignFirstResponder()
+    }
+    
+    @IBAction func cancelInspiration(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     /*

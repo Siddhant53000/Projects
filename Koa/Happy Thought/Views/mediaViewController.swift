@@ -60,7 +60,7 @@ extension UITextView{
 }
 
 
-class mediaViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class mediaViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate {
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var libraryView: UIView!
     @IBOutlet weak var saveView: UIView!
@@ -70,7 +70,7 @@ class mediaViewController: UIViewController, UIImagePickerControllerDelegate, UI
     var mediaShown = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("YES")
+      //  print("YES")
         // [START setup]
        self.hideKeyboardWhenTappedAround()
         self.postTextView.addDoneButtonOnKeyboard()
@@ -98,6 +98,7 @@ class mediaViewController: UIViewController, UIImagePickerControllerDelegate, UI
         self.postTextView.layer.cornerRadius = 10.0
         self.postTextView.layer.borderColor = UIColor.blue.cgColor
         self.postTextView.layer.borderWidth = 1.0
+        self.postTextView.delegate = self
        // FirebaseApp.configure()
         // Do any additional setup after loading the view.
     }
@@ -150,7 +151,7 @@ class mediaViewController: UIViewController, UIImagePickerControllerDelegate, UI
             //fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
             
         }
-        print (selectedImage.size)
+  //      print (selectedImage.size)
         let postWImgViewController:postWithImageViewController = storyboard?.instantiateViewController(withIdentifier: "postWithImageViewController") as! postWithImageViewController
        // postWImgViewController.delegate = self
         postWImgViewController.postImgView?.image = selectedImage
@@ -163,6 +164,33 @@ class mediaViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView)
+       
+    {
+   //      print(textView.text)
+        if (textView.text == "What is something you are grateful for today?" )
+        {
+            textView.text = ""
+            textView.textColor = .black
+        }
+        textView.becomeFirstResponder() //Optional
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView)
+    {
+        if (textView.text == "")
+        {
+            textView.text = "What is something you are grateful for today?"
+            textView.textColor = .lightGray
+        }
+        textView.resignFirstResponder()
+    }
+    
+    
+    @IBAction func cancelThought(_ sender: Any) {
+        [self .dismiss(animated: true, completion: nil)]
     }
     /*
     // MARK: - Navigation
